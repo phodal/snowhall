@@ -15,17 +15,12 @@ import {
 export default class snowhall extends Component {
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.android.js
-        </Text>
-        <Text style={styles.instructions}>
-          Double tap R on your keyboard to reload,{'\n'}
-          Shake or press menu button for dev menu
-        </Text>
+      <View>
+        <View style={[styles.actionBar,styles.row]}>
+          <Text style={[styles.title]}>
+            雪堂
+          </Text>
+        </View>
       </View>
     );
   }
@@ -33,21 +28,20 @@ export default class snowhall extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    backgroundColor: '#EE7700',
+  },
+  row:{
+    flexDirection:'row',
+  },
+  title:{
+    color: '#ffffff',
+  },
+  actionBar: {
+    height:49,
+    alignItems:'center',
     justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+    backgroundColor: '#80d8d8',
+  }
 });
 
 AppRegistry.registerComponent('snowhall', () => snowhall);
