@@ -43,12 +43,13 @@ class MealListing extends Component {
       loading: false,
       error: null,
       recipes: [],
+      headers: [],
     };
   }
 
   componentDidMount = () => {
     this.fetchRecipes();
-  }
+  };
 
   /**
     * Fetch Data from API
@@ -66,10 +67,12 @@ class MealListing extends Component {
     return AppAPI.recipes.get({ categories: meal })
       .then((res) => {
         this.setState({
-          recipes: res,
+          recipes: res.res,
+          headers: res.headers,
           loading: false,
           error: null,
         });
+        console.log(res.headers);
       }).catch((err) => {
         const error = AppAPI.handleError(err);
 
@@ -79,7 +82,7 @@ class MealListing extends Component {
           loading: false,
         });
       });
-  }
+  };
 
   render = () => {
     const { loading, error, recipes } = this.state;

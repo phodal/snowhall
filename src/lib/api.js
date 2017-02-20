@@ -172,7 +172,12 @@ function fetcher(method, endpoint, params, body) {
         }
 
         // Only continue if the header is successful
-        if (rawRes && rawRes.status === 200) { return jsonRes; }
+        if (rawRes && rawRes.status === 200) {
+          return {
+            res: jsonRes,
+            headers: rawRes.headers.map
+          };
+        }
         throw jsonRes;
       })
       .then((res) => {

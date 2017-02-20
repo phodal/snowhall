@@ -61,7 +61,7 @@ class RecipeListing extends Component {
           this.setState({ isRefreshing: false });
         });
     }
-  }
+  };
 
   render = () => {
     const { recipes } = this.props;

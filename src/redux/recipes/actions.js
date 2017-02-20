@@ -13,7 +13,8 @@ export function getMeals() {
       .then((res) => {
         dispatch({
           type: 'MEALS_REPLACE',
-          data: res,
+          data: res.res,
+          headers: res.headers,
         });
       });
   };
