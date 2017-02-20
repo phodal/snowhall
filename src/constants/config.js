@@ -19,8 +19,8 @@ export default {
 
   // URLs
   urls: {
-    resetPassword: 'http://wanwo.xin/reset-password',
-    signUp: 'http://wanwo.xin/register',
+    resetPassword: 'http://www.xuntayizhan.com/wp-login.php?action=lostpassword',
+    signUp: 'http://www.xuntayizhan.com/wp-login.php?action=register',
   },
 
   // Navbar Props
