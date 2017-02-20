@@ -15,6 +15,7 @@ import { AppColors, AppFonts, AppSizes } from '@theme/';
 /* Component ==================================================================== */
 class CustomButton extends Component {
   static propTypes = {
+    verySmall: PropTypes.bool,
     small: PropTypes.bool,
     large: PropTypes.bool,
     outlined: PropTypes.bool,
@@ -26,6 +27,7 @@ class CustomButton extends Component {
   }
 
   static defaultProps = {
+    verySmall: false,
     small: false,
     large: false,
     outlined: false,
@@ -64,6 +66,18 @@ class CustomButton extends Component {
     // Size
     if (this.props.small) {
       props.fontSize = 12;
+      props.buttonStyle.padding = 8;
+
+      if (props.icon && props.icon.name) {
+        props.icon = {
+          ...props.icon,
+          size: 14,
+        };
+      }
+    }// Overrides
+    // Size
+    if (this.props.verySmall) {
+      props.fontSize = 10;
       props.buttonStyle.padding = 8;
 
       if (props.icon && props.icon.name) {

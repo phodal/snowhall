@@ -82,10 +82,10 @@ class Authenticate extends Component {
         <View style={[AppStyles.flex1]} />
         <View style={[AppStyles.flex2]}>
           <Button
-            small
+            verySmall
             title={'随便看看'}
             onPress={Actions.app}
-            backgroundColor={'#CB009E'}
+            backgroundColor={'transparent'}
             raised={false}
           />
         </View>

@@ -28,7 +28,7 @@ const scenes = (
     <Scene
       {...AppConfig.navbarProps}
       key={'login'}
-      title={'Login'}
+      title={'登录'}
       clone
       component={AuthLogin}
       analyticsDesc={'AuthLogin: Login'}
@@ -36,7 +36,7 @@ const scenes = (
     <Scene
       {...AppConfig.navbarProps}
       key={'signUp'}
-      title={'Sign Up'}
+      title={'注册'}
       clone
       component={AuthWebView}
       url={AppConfig.urls.signUp}
@@ -45,7 +45,7 @@ const scenes = (
     <Scene
       {...AppConfig.navbarProps}
       key={'passwordReset'}
-      title={'Password Reset'}
+      title={'重置密码'}
       clone
       component={AuthWebView}
       url={AppConfig.urls.resetPassword}

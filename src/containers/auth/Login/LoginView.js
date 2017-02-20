@@ -66,12 +66,12 @@ class Login extends Component {
       options: {
         fields: {
           Email: {
-            error: 'Please enter a valid email',
+            error: '请输入一个有效的邮箱',
             autoCapitalize: 'none',
             clearButtonMode: 'while-editing',
           },
           Password: {
-            error: 'Your new password must be more than 6 characters',
+            error: '你的新密码应该大于 6 位',
             clearButtonMode: 'while-editing',
             secureTextEntry: true,
           },
@@ -105,7 +105,7 @@ class Login extends Component {
     // Form is valid
     if (credentials) {
       this.setState({ form_values: credentials }, () => {
-        this.setState({ resultMsg: { status: 'One moment...' } });
+        this.setState({ resultMsg: { status: '稍等片刻...' } });
 
         // Scroll to top, to show message
         if (this.scrollView) {
@@ -117,7 +117,7 @@ class Login extends Component {
           password: credentials.Password,
         }, true).then(() => {
           this.setState({
-            resultMsg: { success: 'Awesome, you\'re now logged in!' },
+            resultMsg: { success: '您已登录' },
           }, () => {
             setTimeout(() => {
               Actions.app({ type: 'reset' });
@@ -156,7 +156,7 @@ class Login extends Component {
           />
 
           <Button
-            title={'Login'}
+            title={'登录'}
             onPress={this.login}
           />
 
@@ -164,18 +164,18 @@ class Login extends Component {
 
           <TouchableOpacity onPress={Actions.passwordReset}>
             <Text p style={[AppStyles.textCenterAligned, AppStyles.link]}>
-              Forgot Password
+              忘记密码？
             </Text>
           </TouchableOpacity>
 
           <Spacer size={10} />
 
           <Text p style={[AppStyles.textCenterAligned]}>
-            - or -
+            - - -  . - .
           </Text>
 
           <Button
-            title={'Sign Up'}
+            title={'注册'}
             onPress={Actions.signUp}
           />
         </Card>

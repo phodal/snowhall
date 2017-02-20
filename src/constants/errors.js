@@ -8,7 +8,7 @@
 export default {
   // Defaults
   default: 'Hmm, an unknown error occured',
-  timeout: 'Server Timed Out. Check your internet connection',
+  timeout: '超时。网络错误',
   invalidJson: 'Response returned is not valid JSON',
 
   // Recipes
