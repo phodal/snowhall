@@ -13,7 +13,6 @@ import { AppStyles, AppSizes } from '@theme/';
 
 // Components
 import { TabIcon } from '@ui/';
-import { NavbarMenuButton } from '@containers/ui/NavbarMenuButton/NavbarMenuButtonContainer';
 
 // Scenes
 import Placeholder from '@components/general/Placeholder';
@@ -24,7 +23,6 @@ import RecipeView from '@containers/recipes/RecipeView';
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
-  renderLeftButton: () => <NavbarMenuButton />,
   sceneStyle: {
     ...AppConfig.navbarProps.sceneStyle,
     paddingBottom: AppSizes.tabbarHeight,

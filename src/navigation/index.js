@@ -10,9 +10,6 @@ import { Actions, Scene, ActionConst } from 'react-native-router-flux';
 // Consts and Libs
 import { AppConfig } from '@constants/';
 
-// Components
-import Drawer from '@containers/ui/DrawerContainer';
-
 // Scenes
 import AppLaunch from '@containers/Launch/LaunchContainer';
 import Placeholder from '@components/general/Placeholder';
@@ -33,9 +30,9 @@ export default Actions.create(
     {AuthScenes}
 
     {/* Main App */}
-    <Scene key={'app'} {...AppConfig.navbarProps} title='玩我' hideNavBar={false} type={ActionConst.RESET}>
+    <Scene key={'app'} {...AppConfig.navbarProps} title={AppConfig.appName} hideNavBar={false} type={ActionConst.RESET}>
       {/* Drawer Side Menu */}
-      <Scene key={'home'} component={Drawer} initial={'tabBar'}>
+      <Scene key={'home'} initial={'tabBar'}>
         {/* Tabbar */}
         {TabsScenes}
       </Scene>
