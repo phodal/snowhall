@@ -7,7 +7,7 @@
 
 export default {
   // The URL we're connecting to
-  hostname: 'http://wp-api.mcnam.ee',
+  hostname: 'http://www.xuntayizhan.com/',
 
   // Map shortnames to the actual endpoints, so that we can
   // use them like so: AppAPI.ENDPOINT_NAME.METHOD()
@@ -21,8 +21,8 @@ export default {
     ['login', '/wp-json/jwt-auth/v1/token'], // If you change the key, update the reference below
     ['users', '/wp-json/wp/v2/users'],
     ['me', '/wp-json/wp/v2/users/me'],
-    ['recipes', '/wp-json/wp/v2/recipes'],
-    ['meals', '/wp-json/wp/v2/recipe_meal'],
+    ['recipes', '/wp-json/wp/v2/posts'],
+    ['meals', '/wp-json/wp/v2/categories'],
   ]),
 
   // Which 'endpoint' key deals with our tokens?

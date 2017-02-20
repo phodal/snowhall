@@ -42,7 +42,7 @@ const scenes = (
         {...navbarPropsTabs}
         key={'recipesListing'}
         component={Recipes}
-        title='玩我'
+        title='首页'
         analyticsDesc={'Home: Browse Home Page'}
       />
       <Scene
@@ -75,7 +75,7 @@ const scenes = (
     <Scene
       key={'userCenter'}
       {...navbarPropsTabs}
-      title={'秀秀'}
+      title={'我'}
       component={UserCenter}
       icon={props => TabIcon({ ...props, icon: 'people' })}
       analyticsDesc={'User: User Center'}

@@ -63,7 +63,7 @@ class MealListing extends Component {
       });
     }
 
-    return AppAPI.recipes.get({ recipe_meal: meal })
+    return AppAPI.recipes.get({ categories: meal })
       .then((res) => {
         this.setState({
           recipes: res,
