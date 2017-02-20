@@ -33,7 +33,7 @@ export default Actions.create(
     {AuthScenes}
 
     {/* Main App */}
-    <Scene key={'app'} {...AppConfig.navbarProps} title={AppConfig.appName} hideNavBar={false} type={ActionConst.RESET}>
+    <Scene key={'app'} {...AppConfig.navbarProps} title='玩我' hideNavBar={false} type={ActionConst.RESET}>
       {/* Drawer Side Menu */}
       <Scene key={'home'} component={Drawer} initial={'tabBar'}>
         {/* Tabbar */}

@@ -38,14 +38,14 @@ const scenes = (
       {...navbarPropsTabs}
       key={'recipes'}
       title={'Recipes'}
-      icon={props => TabIcon({ ...props, icon: 'search' })}
+      icon={props => TabIcon({ ...props, icon: 'home' })}
     >
       <Scene
         {...navbarPropsTabs}
         key={'recipesListing'}
         component={Recipes}
-        title={AppConfig.appName}
-        analyticsDesc={'Recipes: Browse Recipes'}
+        title='玩我'
+        analyticsDesc={'Home: Browse Home Page'}
       />
       <Scene
         {...AppConfig.navbarProps}
@@ -61,26 +61,26 @@ const scenes = (
       {...navbarPropsTabs}
       title={'Coming Soon'}
       component={Placeholder}
-      icon={props => TabIcon({ ...props, icon: 'timeline' })}
+      icon={props => TabIcon({ ...props, icon: 'wc' })}
       analyticsDesc={'Placeholder: Coming Soon'}
-    />
-
-    <Scene
-      key={'error'}
-      {...navbarPropsTabs}
-      title={'Example Error'}
-      component={Error}
-      icon={props => TabIcon({ ...props, icon: 'error' })}
-      analyticsDesc={'Error: Example Error'}
     />
 
     <Scene
       key={'styleGuide'}
       {...navbarPropsTabs}
-      title={'Style Guide'}
+      title={'秀秀'}
       component={StyleGuide}
-      icon={props => TabIcon({ ...props, icon: 'speaker-notes' })}
+      icon={props => TabIcon({ ...props, icon: 'palette' })}
       analyticsDesc={'StyleGuide: Style Guide'}
+    />
+
+    <Scene
+      key={'error'}
+      {...navbarPropsTabs}
+      title={'秀秀'}
+      component={Error}
+      icon={props => TabIcon({ ...props, icon: 'people' })}
+      analyticsDesc={'User: User Center'}
     />
   </Scene>
 );

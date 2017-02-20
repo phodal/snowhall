@@ -9,4 +9,4 @@
 import { AppRegistry } from 'react-native';
 import AppContainer from './src/';
 
-AppRegistry.registerComponent('玩我', () => AppContainer);
+AppRegistry.registerComponent('StarterKit', () => AppContainer);
