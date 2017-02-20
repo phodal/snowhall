@@ -19,8 +19,8 @@ export default {
 
   // URLs
   urls: {
-    resetPassword: 'http://wp-api.mcnam.ee/wp-login.php?action=lostpassword',
-    signUp: 'http://wp-api.mcnam.ee/wp-login.php?action=register',
+    resetPassword: 'http://wanwo.xin/reset-password',
+    signUp: 'http://wanwo.xin/register',
   },
 
   // Navbar Props
