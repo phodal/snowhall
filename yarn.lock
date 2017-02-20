@@ -3039,13 +3039,13 @@ mime-db@~1.23.0:
   version "1.23.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.23.0.tgz#a31b4070adaea27d732ea333740a64d0ec9a6659"
 
-mime-types@2.1.11, mime-types@~2.1.7:
+mime-types@2.1.11, mime-types@~2.1.7, mime-types@~2.1.9:
   version "2.1.11"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.11.tgz#c259c471bda808a85d6cd193b430a5fae4473b3c"
   dependencies:
     mime-db "~1.23.0"
 
-mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.13, mime-types@~2.1.6, mime-types@~2.1.9:
+mime-types@^2.1.12, mime-types@~2.1.11, mime-types@~2.1.13, mime-types@~2.1.6:
   version "2.1.14"
   resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.14.tgz#f7ef7d97583fcaf3b7d282b6f8b5679dab1e94ee"
   dependencies:
@@ -3516,6 +3516,13 @@ react-native-experimental-navigation@0.26.x:
   version "4.0.2"
   resolved "git+https://github.com/mcnamee/react-native-google-analytics-bridge.git#20d805400e05cab2f7cb2e908df658954ee36b15"
 
+react-native-infinite-scroll-view@^0.4.2:
+  version "0.4.2"
+  resolved "https://registry.yarnpkg.com/react-native-infinite-scroll-view/-/react-native-infinite-scroll-view-0.4.2.tgz#9091a213aeedf6ac2cee0374648406ab32790f74"
+  dependencies:
+    react-clone-referenced-element "^1.0.1"
+    react-native-scrollable-mixin "^1.0.0"
+
 react-native-router-flux@^3.37.0:
   version "3.37.0"
   resolved "https://registry.yarnpkg.com/react-native-router-flux/-/react-native-router-flux-3.37.0.tgz#18e8fd3e1e6dbdc4d8340cd47313c28bb9bb1caf"
@@ -3525,9 +3532,19 @@ react-native-router-flux@^3.37.0:
     react-native-tabs "^1.0.9"
     react-static-container "1.0.1"
 
+react-native-scrollable-mixin@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-scrollable-mixin/-/react-native-scrollable-mixin-1.0.1.tgz#34a32167b64248594154fd0d6a8b03f22740548e"
+
 react-native-side-menu@^0.20.1:
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/react-native-side-menu/-/react-native-side-menu-0.20.1.tgz#df21b4bb9d8a1aa3bae53d74ddf8a739eb59bfc5"
+
+react-native-swipe-cards@^0.1.0:
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/react-native-swipe-cards/-/react-native-swipe-cards-0.1.0.tgz#d0a45dd7682b67414d0c580100aa903f4627475a"
+  dependencies:
+    clamp "^1.0.1"
 
 react-native-tab-navigator@^0.3.3:
   version "0.3.3"
