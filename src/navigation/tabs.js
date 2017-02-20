@@ -16,10 +16,10 @@ import { TabIcon } from '@ui/';
 
 // Scenes
 import Placeholder from '@components/general/Placeholder';
-import Error from '@components/general/Error';
 import StyleGuide from '@containers/StyleGuideView';
 import Recipes from '@containers/recipes/Browse/BrowseContainer';
 import RecipeView from '@containers/recipes/RecipeView';
+import UserCenter from '@containers/UserCenterView';
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -73,10 +73,10 @@ const scenes = (
     />
 
     <Scene
-      key={'error'}
+      key={'userCenter'}
       {...navbarPropsTabs}
       title={'秀秀'}
-      component={Error}
+      component={UserCenter}
       icon={props => TabIcon({ ...props, icon: 'people' })}
       analyticsDesc={'User: User Center'}
     />
