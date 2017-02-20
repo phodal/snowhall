@@ -1,4 +1,4 @@
-package com.wanwo;
+package xin.wanwo;
 
 import com.facebook.react.ReactActivity;
 
