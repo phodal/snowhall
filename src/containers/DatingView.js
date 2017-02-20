@@ -21,7 +21,7 @@ import {
   FormInput,
   FormLabel,
 } from '@components/ui/';
-
+import Tinder from './Tinder.js'
 
 const styles = StyleSheet.create({
   // Tab Styles
@@ -52,7 +52,7 @@ class DatingView extends Component {
         automaticallyAdjustContentInsets={false}
         style={[AppStyles.container]}
       >
-          <Text>马上到来</Text>
+        <Tinder style={{flex: 1}} />
       </ScrollView>
     </View>
   )
