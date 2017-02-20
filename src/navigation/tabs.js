@@ -1,25 +1,16 @@
-/**
- * Tabs Scenes
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
 import React from 'react';
 import { Scene } from 'react-native-router-flux';
 
-// Consts and Libs
 import { AppConfig } from '@constants/';
 import { AppStyles, AppSizes } from '@theme/';
 
-// Components
 import { TabIcon } from '@ui/';
 
-// Scenes
-import Placeholder from '@components/general/Placeholder';
 import StyleGuide from '@containers/StyleGuideView';
 import Recipes from '@containers/recipes/Browse/BrowseContainer';
 import RecipeView from '@containers/recipes/RecipeView';
 import UserCenter from '@containers/UserCenterView';
+import DatingView from "../containers/DatingView";
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -49,7 +40,7 @@ const scenes = (
         {...AppConfig.navbarProps}
         key={'recipeView'}
         component={RecipeView}
-        getTitle={props => ((props.title) ? props.title : 'View Recipe')}
+        getTitle={props => ((props.title) ? props.title : '文章')}
         analyticsDesc={'RecipeView: View Recipe'}
       />
     </Scene>
@@ -57,8 +48,8 @@ const scenes = (
     <Scene
       key={'timeline'}
       {...navbarPropsTabs}
-      title={'Coming Soon'}
-      component={Placeholder}
+      title={'约'}
+      component={DatingView}
       icon={props => TabIcon({ ...props, icon: 'wc' })}
       analyticsDesc={'Placeholder: Coming Soon'}
     />
@@ -66,7 +57,7 @@ const scenes = (
     <Scene
       key={'styleGuide'}
       {...navbarPropsTabs}
-      title={'秀秀'}
+      title={'秀'}
       component={StyleGuide}
       icon={props => TabIcon({ ...props, icon: 'palette' })}
       analyticsDesc={'StyleGuide: Style Guide'}
