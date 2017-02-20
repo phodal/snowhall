@@ -18,6 +18,7 @@ import { ErrorMessages } from '@constants/';
 
 // Containers
 import RecipeCard from '@containers/recipes/Card/CardContainer';
+import InfiniteScrollView from 'react-native-infinite-scroll-view';
 
 // Components
 import Error from '@components/general/Error';
@@ -28,14 +29,17 @@ class RecipeListing extends Component {
 
   static propTypes = {
     recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
+    canLoadMoreContent: PropTypes.bool,
+    onLoadMoreAsync: PropTypes.func,
     reFetch: PropTypes.func,
-  }
+  };
 
   constructor() {
     super();
 
     this.state = {
       isRefreshing: true,
+      canLoadMoreContent: false,
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
@@ -45,6 +49,7 @@ class RecipeListing extends Component {
   componentWillReceiveProps(props) {
     this.setState({
       dataSource: this.state.dataSource.cloneWithRows(props.recipes),
+      canLoadMoreContent: props.canLoadMoreContent,
       isRefreshing: false,
     });
   }
@@ -63,9 +68,18 @@ class RecipeListing extends Component {
     }
   };
 
+  onLoadMoreAsync = () => {
+    this.setState({isLoadMoreAsync: true});
+
+    this.props.onLoadMoreAsync()
+      .then(() => {
+        this.setState({isLoadMoreAsync: false});
+      });
+  };
+
   render = () => {
     const { recipes } = this.props;
-    const { isRefreshing, dataSource } = this.state;
+    const { isRefreshing, dataSource, canLoadMoreContent } = this.state;
 
     if (!isRefreshing && (!recipes || recipes.length < 1)) {
       return <Error text={ErrorMessages.recipe404} />;
@@ -74,10 +88,12 @@ class RecipeListing extends Component {
     return (
       <View style={[AppStyles.container]}>
         <ListView
-          initialListSize={8}
+          initialListSize={10}
+          renderScrollComponent={props => <InfiniteScrollView {...props} />}
           renderRow={recipe => <RecipeCard recipe={recipe} />}
           dataSource={dataSource}
-          automaticallyAdjustContentInsets={false}
+          canLoadMore={canLoadMoreContent}
+          onLoadMoreAsync={this.onLoadMoreAsync}
           refreshControl={
             this.props.reFetch ?
               <RefreshControl
