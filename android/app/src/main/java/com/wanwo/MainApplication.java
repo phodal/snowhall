@@ -1,4 +1,4 @@
-package com.starterkit;
+package com.wanwo;
 
 import android.app.Application;
 import android.util.Log;

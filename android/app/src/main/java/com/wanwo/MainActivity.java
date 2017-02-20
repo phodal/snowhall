@@ -1,4 +1,4 @@
-package com.starterkit;
+package com.wanwo;
 
 import com.facebook.react.ReactActivity;
 
