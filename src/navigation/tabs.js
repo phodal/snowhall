@@ -11,6 +11,7 @@ import Recipes from '@containers/recipes/Browse/BrowseContainer';
 import RecipeView from '@containers/recipes/RecipeView';
 import UserCenter from '@containers/UserCenterView';
 import DatingView from "../containers/DatingView";
+import ShowView from "../containers/ShowView";
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -55,12 +56,12 @@ const scenes = (
     />
 
     <Scene
-      key={'styleGuide'}
+      key={'showView'}
       {...navbarPropsTabs}
       title={'秀'}
-      component={StyleGuide}
+      component={ShowView}
       icon={props => TabIcon({ ...props, icon: 'palette' })}
-      analyticsDesc={'StyleGuide: Style Guide'}
+      analyticsDesc={'ShowView: Style Guide'}
     />
 
     <Scene
