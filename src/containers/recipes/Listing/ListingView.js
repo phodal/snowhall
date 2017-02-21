@@ -48,10 +48,19 @@ class RecipeListing extends Component {
 
   componentWillReceiveProps(props) {
     this.setState({
-      dataSource: this.state.dataSource.cloneWithRows(props.recipes),
+      dataSource: this.getUpdatedDataSource(props),
       canLoadMoreContent: props.canLoadMoreContent,
       isRefreshing: false,
     });
+  }
+
+  getUpdatedDataSource(props) {
+    // See the ListView.DataSource documentation for more information on
+    // how to properly structure your data depending on your use case.
+    let rows = props.recipes;
+    let ids = rows.map((obj, index) => index);
+
+    return this.state.dataSource.cloneWithRows(rows, ids);
   }
 
   /**

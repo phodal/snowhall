@@ -21,8 +21,9 @@ import RecipeListingRender from './ListingView';
 
 /* Redux ==================================================================== */
 // What data from the store shall we send to the component?
-const mapStateToProps = () => ({
-});
+const mapStateToProps = (state) => {
+  return {recipes: state.recipes};
+};
 
 // Any actions to map to the component?
 const mapDispatchToProps = {
@@ -42,6 +43,7 @@ class MealListing extends Component {
     this.state = {
       page: 1,
       loading: false,
+      loadingMore: false,
       canLoadMoreContent: false,
       error: null,
       recipes: [],
@@ -57,10 +59,16 @@ class MealListing extends Component {
     * Fetch Data from API
     */
   fetchRecipes = (options) => {
-    const { meal } = this.props;
-    if(options && options.reFetch) {
+    const {meal} = this.props;
+    if (options && options.reFetch) {
       this.setState({
         page: 1
+      })
+    }
+
+    if(this.state.page > 1) {
+      this.setState({
+        loadingMore: true
       })
     }
 
@@ -71,19 +79,15 @@ class MealListing extends Component {
       });
     }
 
-    return AppAPI.recipes.get({ categories: meal, page: this.state.page })
+    return AppAPI.recipes.get({categories: meal, page: this.state.page})
       .then((res) => {
-        let _canLoadMoreContent = false;
-        if(res.headers.link && res.headers.link.length > 0) {
-          let nextRegex = /rel="next"/g;
-          if (nextRegex.test(res.headers.link)) {
-            _canLoadMoreContent = true;
-          }
-        }
+        let _canLoadMoreContent = this.haveLoadMoreContent(res);
+
+        let recipes = this.state.recipes.concat(res.res);
         this.setState({
-          recipes: res.res,
-          headers: res.headers,
+          recipes: recipes,
           loading: false,
+          loadingMore: false,
           canLoadMoreContent: _canLoadMoreContent,
           error: null,
         });
@@ -93,18 +97,36 @@ class MealListing extends Component {
         this.setState({
           recipes: [],
           error,
+          loadingMore: false,
+          canLoadMoreContent: false,
           loading: false,
         });
       });
   };
 
+  haveLoadMoreContent(res) {
+    let _canLoadMoreContent = false;
+    if (res.headers.link && res.headers.link.length > 0) {
+      let nextRegex = /rel="next"/g;
+      if (nextRegex.test(res.headers.link)) {
+        _canLoadMoreContent = true;
+      }
+    }
+    return _canLoadMoreContent;
+  }
+
   _loadMoreContentAsync = async () => {
     let page = this.state.page + 1;
+
     this.setState({
-      page: page
+      page: page,
+      canLoadMoreContent: false,
     });
 
-    if(this.state.loading === false) {
+    if (this.state.loadingMore === false) {
+      this.setState({
+        loadingMore: true
+      });
       this.fetchRecipes();
     }
   };
