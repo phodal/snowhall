@@ -1,4 +1,5 @@
 import React, {
+  PropTypes,
   Component
 } from 'react'
 
@@ -16,6 +17,10 @@ export default class PhotoBrowserView extends Component {
     super(props);
     this.state = {}
   }
+
+  static propTypes = {
+    mediaList: PropTypes.array
+  };
 
   render() {
     return (

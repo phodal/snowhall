@@ -119,7 +119,7 @@ let mockData = [
   {
     "id": "41",
     "nickname": "Bob Brown",
-    "avatar": "1",
+    "avatar": "http://articles.phodal.com/qrcode.jpg",
     "text": "Behind every successful man there's a lot u unsuccessful years. https://www.phodal.com/",
     "original_pic": "",
     "created_at": "1404709434"
@@ -127,23 +127,15 @@ let mockData = [
   {
     "id": "40",
     "nickname": "Jean Kerr",
-    "avatar": "7",
+    "avatar": "http://articles.phodal.com/qrcode.jpg",
     "text": "I think success has no rules, but you can learn a lot from failure. ",
     "original_pic": "",
     "created_at": "1404708544"
   },
   {
-    "id": "39",
-    "nickname": "Colin L. Powell",
-    "avatar": "3",
-    "text": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure. https://www.baidu.com ",
-    "original_pic": "",
-    "created_at": "1404708455"
-  },
-  {
     "id": "38",
     "nickname": "Balzac",
-    "avatar": "5",
+    "avatar": "http://articles.phodal.com/qrcode.jpg",
     "text": "There is no such thing as a great talent without great will - power.",
     "original_pic": "http://articles.phodal.com/qrcode.jpg",
     "created_at": "1404707590"
@@ -210,10 +202,10 @@ class ShowView extends Component {
             {this._renderMsgImage(info)}
           </View>
           <View style={styles.bottomContainer}>
-            <TouchableHighlight onPress={this._showComment.bind(this)} style={styles.bottomTool}>
+            <TouchableHighlight underlayColor='transparent' onPress={this._showComment.bind(this)} style={styles.bottomTool}>
               <Text style={styles.bottomToolText}>评论</Text>
             </TouchableHighlight>
-            <TouchableHighlight onPress={this._likeIt.bind(this)} style={styles.bottomTool}>
+            <TouchableHighlight underlayColor='transparent' onPress={this._likeIt.bind(this)} style={styles.bottomTool}>
               <Text style={styles.bottomToolText}>赞</Text>
             </TouchableHighlight>
           </View>
