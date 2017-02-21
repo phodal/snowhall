@@ -59,6 +59,8 @@ const scenes = (
       {...navbarPropsTabs}
       title={'秀'}
       component={ShowView}
+      onRight={()=>alert("Right button")}
+      rightTitle="+"
       icon={props => TabIcon({ ...props, icon: 'palette' })}
       analyticsDesc={'ShowView: Style Guide'}
     />
