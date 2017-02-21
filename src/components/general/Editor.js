@@ -10,8 +10,7 @@ import {
   TouchableHighlight,
   StyleSheet
 } from 'react-native'
-
-import iconfontConf from '../utils/iconfontConf'
+import { Icon } from 'react-native-elements';
 
 export default class EditorComp extends Component {
   constructor(props) {
@@ -32,29 +31,21 @@ export default class EditorComp extends Component {
           onChangeText={this.props.onChangeText}
         />
         <View style={styles.toolbar}>
-          {this._renderTool('camera', 'uniE611')}
-          {this._renderTool('album', 'uniE609')}
-          {this._renderTool('emotion', 'uniE607')}
-          {this._renderTool('at', 'uniE61A')}
-          {this._renderTool('location', 'uniE61B')}
+          <View style={styles.tool}>
+            <Icon name={'camera'} size={26} color={'#CCC'}/>
+          </View>
+          <View style={styles.tool}>
+            <Icon name={'face'} size={26} color={'#CCC'}/>
+          </View>
+          <View style={styles.tool}>
+            <Icon name={'email'} size={26} color={'#CCC'}/>
+          </View>
+          <View style={styles.tool}>
+            <Icon name={'location-on'} size={26} color={'#CCC'}/>
+          </View>
         </View>
       </View>
     )
-  }
-
-  _renderTool(tool, icon, handle = () => {}) {
-    if(this._enableTool(tool)) {
-      return (
-        <TouchableHighlight style={styles.tool}>
-          <Text style={styles.toolText}>{iconfontConf(icon)}</Text>
-        </TouchableHighlight>
-      )
-    }
-  }
-
-  _enableTool(tool) {
-    let list = this.props.enableTools;
-    return ~list.trim().indexOf(tool)
   }
 }
 
@@ -101,4 +92,4 @@ const styles = StyleSheet.create({
     fontFamily: 'iconfont',
     color: '#666'
   }
-})
+});
