@@ -23,6 +23,7 @@ export default class EditorComp extends Component {
   }
 
   render() {
+    let that = this;
     return (
       <View>
         <TextInput
@@ -36,15 +37,17 @@ export default class EditorComp extends Component {
           <View style={styles.tool}>
             <Button
               icon={{name: 'camera'}}
-              onPress={this.pickUpImage}
+              onPress={this.pickUpImage.bind(that)}
             />
           </View>
           <View style={styles.tool}>
             <Icon name={'location-on'} size={26} color={'#CCC'}/>
           </View>
-          <View>
-            <Image source={this.state.image} />
-          </View>
+          {this.state.image ?
+            <View>
+              <Image source={require(this.state.image)}/>
+            </View> : null
+          }
         </View>
       </View>
     )
@@ -77,9 +80,7 @@ export default class EditorComp extends Component {
       }
       else {
         let source = { uri: response.uri };
-        that.setState({
-          image: source
-        });
+        that.state.image = source;
       }
     });
   }
