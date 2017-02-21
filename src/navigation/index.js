@@ -16,6 +16,7 @@ import AuthScenes from './auth';
 import TabsScenes from './tabs';
 import PhotoBrowserView from "../components/general/PhotoBrowserView";
 import WebView from "../components/general/WebView";
+import TweetEditView from "../containers/show/TweetEditView";
 
 /* Routes ==================================================================== */
 export default Actions.create(
@@ -52,6 +53,15 @@ export default Actions.create(
         clone
         component={WebView}
         analyticsDesc={'WebView: Open View'}
+      />
+
+      <Scene
+        key={'tweetEditView'}
+        title={'秀一个'}
+        clone
+        rightTitle=''
+        component={TweetEditView}
+        analyticsDesc={'TweetEditView: Open View'}
       />
 
       <Scene

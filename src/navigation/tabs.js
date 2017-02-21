@@ -1,16 +1,13 @@
-import React from 'react';
-import { Scene } from 'react-native-router-flux';
-
-import { AppConfig } from '@constants/';
-import { AppStyles, AppSizes } from '@theme/';
-
-import { TabIcon } from '@ui/';
-
-import Recipes from '@containers/recipes/Browse/BrowseContainer';
-import RecipeView from '@containers/recipes/RecipeView';
-import UserCenter from '@containers/UserCenterView';
+import React from "react";
+import {Scene, Actions} from "react-native-router-flux";
+import {AppConfig} from "@constants/";
+import {AppStyles, AppSizes} from "@theme/";
+import {TabIcon} from "@ui/";
+import Recipes from "@containers/recipes/Browse/BrowseContainer";
+import RecipeView from "@containers/recipes/RecipeView";
+import UserCenter from "@containers/UserCenterView";
 import DatingView from "../containers/DatingView";
-import ShowView from "../containers/ShowView";
+import ShowView from "../containers/show/ShowView";
 import MeetupView from "../containers/MeetupView";
 import {Image} from "react-native";
 
@@ -61,7 +58,9 @@ const scenes = (
       {...navbarPropsTabs}
       title={'秀'}
       component={ShowView}
-      onRight={()=>alert("Right button")}
+      onRight={()=> {
+        Actions.tweetEditView()
+      }}
       rightTitle="秀一个"
       rightButtonTextStyle = {AppStyles.rightButtonStyle}
       icon={props => TabIcon({ ...props, icon: 'palette' })}
