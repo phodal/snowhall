@@ -229,7 +229,7 @@ export default {
     color: '#ffffff',
     fontWeight: 'bold',
     fontFamily: Fonts.base.family,
-    fontSize: Fonts.base.size,
+    fontSize: Fonts.base.size * 1.2,
   },
   navbarButton: {
     tintColor: '#ffffff',
@@ -241,4 +241,7 @@ export default {
     borderTopColor: Colors.border,
     borderTopWidth: 1,
   },
+  rightButtonStyle: {
+    color: '#ffffff'
+  }
 };

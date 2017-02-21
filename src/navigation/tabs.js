@@ -12,6 +12,7 @@ import UserCenter from '@containers/UserCenterView';
 import DatingView from "../containers/DatingView";
 import ShowView from "../containers/ShowView";
 import MeetupView from "../containers/MeetupView";
+import {Image} from "react-native";
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -49,7 +50,7 @@ const scenes = (
     <Scene
       key={'timeline'}
       {...navbarPropsTabs}
-      title={'赏'}
+      title={'寻'}
       component={DatingView}
       icon={props => TabIcon({ ...props, icon: 'wc' })}
       analyticsDesc={'Placeholder: Coming Soon'}
@@ -61,7 +62,8 @@ const scenes = (
       title={'秀'}
       component={ShowView}
       onRight={()=>alert("Right button")}
-      rightTitle="+"
+      rightTitle="秀一个"
+      rightButtonTextStyle = {AppStyles.rightButtonStyle}
       icon={props => TabIcon({ ...props, icon: 'palette' })}
       analyticsDesc={'ShowView: Style Guide'}
     />
