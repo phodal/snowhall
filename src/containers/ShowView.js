@@ -114,11 +114,55 @@ const styles = StyleSheet.create({
   }
 });
 
+let mockData = {
+  "err_code": 0,
+  "err_msg": "success",
+  "data": [
+    {
+      "id": "41",
+      "nickname":"Bob Brown",
+      "avatar":"1",
+      "text": "Behind every successful man there's a lot u unsuccessful years. https://www.google.com/",
+      "original_pic": "",
+      "created_at": "1404709434"
+    },
+    {
+      "id": "40",
+      "nickname":"Jean Kerr",
+      "avatar":"7",
+      "text": "I think success has no rules, but you can learn a lot from failure. ",
+      "original_pic": "",
+      "created_at": "1404708544"
+    },
+    {
+      "id": "39",
+      "nickname":"Colin L. Powell",
+      "avatar":"3",
+      "text": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure. www.youtube.com ",
+      "original_pic": "",
+      "created_at": "1404708455"
+    },
+    {
+      "id": "38",
+      "nickname":"Balzac",
+      "avatar":"5",
+      "text": "There is no such thing as a great talent without great will - power.",
+      "original_pic": "http://lorempixel.com/1000/700/nature/5/",
+      "created_at": "1404707590"
+    }
+  ]
+};
+
 class ShowView extends Component {
   static componentName = 'ShowView';
 
   constructor(props) {
     super(props);
+    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
+    this.state = {
+      timeline: ds.cloneWithRows(mockData)
+    }
   }
 
   render () {
@@ -126,11 +170,7 @@ class ShowView extends Component {
       <ListView
         renderRow={this._renderRowView.bind(this)}
         onFetch={this._onFetch.bind(this)}
-        firstLoader={true}
-        pagination={true}
-        refreshable={true}
-        withSections={false}
-        spinnerColor={"gray"}
+        dataSource={this.state.timeline}
       />
     )
   };
@@ -139,49 +179,14 @@ class ShowView extends Component {
     this._root.setNativeProps(nativeProps);
   }
 
-  _onFetch(page = 1, callback, options){
-    let mockData = {
-      "err_code": 0,
-      "err_msg": "success",
-      "data": [
-        {
-          "id": "41",
-          "nickname":"Bob Brown",
-          "avatar":"1",
-          "text": "Behind every successful man there's a lot u unsuccessful years. https://www.google.com/",
-          "original_pic": "",
-          "created_at": "1404709434"
-        },
-        {
-          "id": "40",
-          "nickname":"Jean Kerr",
-          "avatar":"7",
-          "text": "I think success has no rules, but you can learn a lot from failure. ",
-          "original_pic": "",
-          "created_at": "1404708544"
-        },
-        {
-          "id": "39",
-          "nickname":"Colin L. Powell",
-          "avatar":"3",
-          "text": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure. www.youtube.com ",
-          "original_pic": "",
-          "created_at": "1404708455"
-        },
-        {
-          "id": "38",
-          "nickname":"Balzac",
-          "avatar":"5",
-          "text": "There is no such thing as a great talent without great will - power.",
-          "original_pic": "http://lorempixel.com/1000/700/nature/5/",
-          "created_at": "1404707590"
-        }
-      ]
-    };
+  componentDidMount = () => {
+    this._onFetch();
+  };
+
+  _onFetch(page = 1){
     this.setState({
       timeline: mockData
     });
-    callback(mockData)
   }
 
   _renderRowView(info) {
