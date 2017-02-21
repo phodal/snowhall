@@ -6,6 +6,7 @@ import {
   ScrollView,
   StyleSheet,
   Image,
+  Text,
   TouchableHighlight,
   Platform,
   TouchableOpacity,
@@ -18,7 +19,6 @@ import {
   Button,
   Card,
   Spacer,
-  Text,
   List,
   ListItem,
   FormInput,
@@ -26,7 +26,7 @@ import {
 } from '@components/ui/';
 
 import ParsedText from 'react-native-parsed-text'
-import GiftedListView from 'react-native-gifted-listview'
+import moment from "moment";
 
 const styles = StyleSheet.create({
   paginationView: {
@@ -193,15 +193,14 @@ class ShowView extends Component {
 
   _renderRowView(info) {
     return (
-      <View underlayColor='transparent' onPress={this._gotoDetails.bind(this, info)}>
+      <TouchableHighlight underlayColor='transparent' onPress={this._gotoDetails.bind(this, info)}>
         <View ref={component => this._root = component} style={styles.tweetContainer}>
           <View style={styles.topContainer}>
             <Image source={{uri: info.avatar}} style={styles.avatar} />
             <View>
               <View style={styles.userContainer}>
                 <Text style={styles.name}>{info.nickname}</Text>
-                {/*<Text style={styles.time}>{'#' + info.id + ' '} {moment(info.created_at * 1000).fromNow()}</Text>*/}
-                <Text style={styles.time}>{'#' + info.id + ' '} {info.created_at}</Text>
+                <Text style={styles.time}>{'#' + info.id + ' '} {moment(info.created_at * 1000).fromNow()}</Text>
               </View>
             </View>
           </View>
@@ -210,16 +209,24 @@ class ShowView extends Component {
             {this._renderMsgImage(info)}
           </View>
           <View style={styles.bottomContainer}>
-            <View style={styles.bottomTool}>
+            <TouchableHighlight onPress={this._showComment.bind(this)} style={styles.bottomTool}>
               <Text style={styles.bottomToolText}>评论</Text>
-            </View>
-            <View style={styles.bottomTool}>
+            </TouchableHighlight>
+            <TouchableHighlight onPress={this._likeIt.bind(this)} style={styles.bottomTool}>
               <Text style={styles.bottomToolText}>赞</Text>
-            </View>
+            </TouchableHighlight>
           </View>
         </View>
-      </View>
+      </TouchableHighlight>
     )
+  }
+
+  _likeIt() {
+
+  }
+
+  _showComment() {
+
   }
 
   _renderMsgImage(info) {
