@@ -103,7 +103,10 @@ class MealListing extends Component {
     this.setState({
       page: page
     });
-    this.fetchRecipes();
+
+    if(this.state.loading === false) {
+      this.fetchRecipes();
+    }
   };
 
   render = () => {
