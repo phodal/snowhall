@@ -38,7 +38,6 @@ class RecipeView extends Component {
       title: PropTypes.object.isRequired,
       content: PropTypes.object,
       featured_image: PropTypes.string,
-      acf: PropTypes.object,
     }).isRequired,
   };
 
@@ -87,7 +86,7 @@ class RecipeView extends Component {
   }
 
   render = () => {
-    const { title, content, acf } = this.props.recipe;
+    const { title, content } = this.props.recipe;
     const featuredImage = this.props.recipe.featured_image;
 
     return (
@@ -103,21 +102,6 @@ class RecipeView extends Component {
           <Text h2>{title.rendered}</Text>
           <Text>{content.rendered}</Text>
         </Card>
-
-        {acf.ingredients ?
-          <Card>
-            <Text h2>Ingredients</Text>
-            {this.renderIngredients(acf.ingredients)}
-          </Card>
-        : null}
-
-        {acf.methods ?
-          <Card>
-            <Text h2>Method</Text>
-            {this.renderMethod(acf.methods)}
-          </Card>
-        : null}
-
         <Spacer size={20} />
       </ScrollView>
     );
