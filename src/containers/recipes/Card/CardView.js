@@ -1,13 +1,7 @@
-/**
- * Recipe View Screen
- *  - The individual recipe screen
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
 import React, { Component, PropTypes } from 'react';
 import {
   View,
+  Text,
   StyleSheet,
   TouchableOpacity,
 } from 'react-native';
@@ -17,7 +11,7 @@ import { Icon } from 'react-native-elements';
 import { AppStyles } from '@theme/';
 
 // Components
-import { Card, Text } from '@ui/';
+import { Card } from '@ui/';
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
@@ -36,19 +30,21 @@ class RecipeCard extends Component {
     image: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     content: PropTypes.string.isRequired,
+    date: PropTypes.string.isRequired,
     onPress: PropTypes.func,
     onPressFavourite: PropTypes.func,
     isFavourite: PropTypes.bool,
   }
 
   render = () => {
-    const { title, content, image, onPress, onPressFavourite, isFavourite } = this.props;
+    const { title, content, image, onPress, onPressFavourite, isFavourite, date } = this.props;
 
     return (
       <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
         <Card image={image && { uri: image }}>
           <View style={[AppStyles.paddingBottomSml]}>
-            <Text h3>{title}</Text>
+            <Text>{title}</Text>
+            <Text>{date}</Text>
             <Text>{content}</Text>
 
             {!!onPressFavourite &&

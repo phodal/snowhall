@@ -45,7 +45,7 @@ class RecipeCard extends Component {
         favourite_recipes: PropTypes.arrayOf(PropTypes.object),
       }),
     }),
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -71,7 +71,7 @@ class RecipeCard extends Component {
       title: this.props.recipe.title.rendered,
       recipe: this.props.recipe,
     });
-  }
+  };
 
   /**
     * When user taps to favourite a recipe
@@ -107,7 +107,7 @@ class RecipeCard extends Component {
     */
   parseRecipeData = (data) => {
     const recipe = data;
-    const { title, content } = data;
+    const { title, content, date } = data;
     const featuredImg = data.better_featured_image;
     title.rendered = AppUtil.htmlEntitiesDecode(title.rendered);
 
@@ -129,9 +129,10 @@ class RecipeCard extends Component {
     return {
       image: recipe.featured_image,
       title: title.rendered,
+      date: date,
       content: summary,
     };
-  }
+  };
 
   /**
     * Check in Redux to find if this Recipe ID is a Favourite
@@ -167,6 +168,7 @@ class RecipeCard extends Component {
       <RecipeCardRender
         image={recipe.image}
         title={recipe.title}
+        date={recipe.date}
         content={recipe.content}
         onPress={this.onPressCard}
         onPressFavourite={(user && user.id) ? this.onPressFavourite : null}
