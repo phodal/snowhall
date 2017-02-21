@@ -61,7 +61,7 @@ class RecipeListing extends Component {
     if (this.props.reFetch) {
       this.setState({ isRefreshing: true });
 
-      this.props.reFetch()
+      this.props.reFetch({ reFetch: true })
         .then(() => {
           this.setState({ isRefreshing: false });
         });

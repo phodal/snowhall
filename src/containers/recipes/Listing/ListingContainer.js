@@ -40,6 +40,7 @@ class MealListing extends Component {
     super();
 
     this.state = {
+      page: 1,
       loading: false,
       canLoadMoreContent: false,
       error: null,
@@ -55,8 +56,13 @@ class MealListing extends Component {
   /**
     * Fetch Data from API
     */
-  fetchRecipes = () => {
+  fetchRecipes = (options) => {
     const { meal } = this.props;
+    if(options && options.reFetch) {
+      this.setState({
+        page: 1
+      })
+    }
 
     // Forgot to pass in a category?
     if (!meal) {
@@ -65,11 +71,14 @@ class MealListing extends Component {
       });
     }
 
-    return AppAPI.recipes.get({ categories: meal })
+    return AppAPI.recipes.get({ categories: meal, page: this.state.page })
       .then((res) => {
-        var _canLoadMoreContent = false;
+        let _canLoadMoreContent = false;
         if(res.headers.link && res.headers.link.length > 0) {
-          _canLoadMoreContent = true;
+          let nextRegex = /rel="next"/g;
+          if (nextRegex.test(res.headers.link)) {
+            _canLoadMoreContent = true;
+          }
         }
         this.setState({
           recipes: res.res,
@@ -90,7 +99,11 @@ class MealListing extends Component {
   };
 
   _loadMoreContentAsync = async () => {
-    console.log('_loadMoreContentAsync');
+    let page = this.state.page + 1;
+    this.setState({
+      page: page
+    });
+    this.fetchRecipes();
   };
 
   render = () => {
