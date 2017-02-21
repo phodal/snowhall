@@ -8,7 +8,7 @@ import RecipeView from "@containers/recipes/RecipeView";
 import UserCenter from "@containers/UserCenterView";
 import DatingView from "../containers/dating/DatingView";
 import ShowView from "../containers/show/ShowView";
-import MeetupView from "../containers/MeetupView";
+import MeetupView from "../containers/meetup/MeetupView";
 import {Image} from "react-native";
 
 const navbarPropsTabs = {
