@@ -1,11 +1,3 @@
-/**
- * Web View
- *
- * <WebView url={"http://google.com"} />
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
 import React, { Component, PropTypes } from 'react';
 import {
   WebView,
@@ -66,6 +58,8 @@ class AppWebView extends Component {
 
   render = () => {
     const { webViewURL, loading } = this.state;
+
+    console.log(webViewURL);
 
     if (loading) return <Loading />;
     if (!webViewURL) return <Error type={'URL not defined.'} />;

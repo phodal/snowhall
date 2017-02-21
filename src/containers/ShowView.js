@@ -120,7 +120,7 @@ let mockData = [
     "id": "41",
     "nickname": "Bob Brown",
     "avatar": "1",
-    "text": "Behind every successful man there's a lot u unsuccessful years. https://www.google.com/",
+    "text": "Behind every successful man there's a lot u unsuccessful years. https://www.phodal.com/",
     "original_pic": "",
     "created_at": "1404709434"
   },
@@ -136,7 +136,7 @@ let mockData = [
     "id": "39",
     "nickname": "Colin L. Powell",
     "avatar": "3",
-    "text": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure. www.youtube.com ",
+    "text": "There are no secrets to success. It is the result of preparation, hard work, and learning from failure. https://www.baidu.com ",
     "original_pic": "",
     "created_at": "1404708455"
   },
@@ -240,8 +240,13 @@ class ShowView extends Component {
     }
   }
 
-  _handleUrlPress(url) {
 
+
+  _handleUrlPress(url) {
+    Actions.webView({
+      onNavigationStateChange: () => {},
+      url: url
+    });
   }
 
   _gotoDetails(tweet) {

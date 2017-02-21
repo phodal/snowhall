@@ -10,6 +10,8 @@ import {
 import PhotoBrowser from 'react-native-photo-browser'
 
 export default class PhotoBrowserView extends Component {
+  static componentName = 'PhotoBrowserView';
+
   constructor(props) {
     super(props);
     this.state = {}
