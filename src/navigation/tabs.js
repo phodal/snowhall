@@ -6,7 +6,7 @@ import {TabIcon} from "@ui/";
 import Recipes from "@containers/recipes/Browse/BrowseContainer";
 import RecipeView from "@containers/recipes/RecipeView";
 import UserCenter from "@containers/UserCenterView";
-import DatingView from "../containers/DatingView";
+import DatingView from "../containers/dating/DatingView";
 import ShowView from "../containers/show/ShowView";
 import MeetupView from "../containers/MeetupView";
 import {Image} from "react-native";
