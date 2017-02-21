@@ -11,6 +11,7 @@ import RecipeView from '@containers/recipes/RecipeView';
 import UserCenter from '@containers/UserCenterView';
 import DatingView from "../containers/DatingView";
 import ShowView from "../containers/ShowView";
+import MeetupView from "../containers/MeetupView";
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -48,7 +49,7 @@ const scenes = (
     <Scene
       key={'timeline'}
       {...navbarPropsTabs}
-      title={'约'}
+      title={'赏'}
       component={DatingView}
       icon={props => TabIcon({ ...props, icon: 'wc' })}
       analyticsDesc={'Placeholder: Coming Soon'}
@@ -63,6 +64,15 @@ const scenes = (
       rightTitle="+"
       icon={props => TabIcon({ ...props, icon: 'palette' })}
       analyticsDesc={'ShowView: Style Guide'}
+    />
+
+    <Scene
+      key={'meetupView'}
+      {...navbarPropsTabs}
+      title={'约'}
+      component={MeetupView}
+      icon={props => TabIcon({ ...props, icon: 'dashboard' })}
+      analyticsDesc={'MeetupView: Style Guide'}
     />
 
     <Scene

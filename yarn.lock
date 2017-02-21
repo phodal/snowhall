@@ -3081,7 +3081,7 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@2.x.x:
+moment@2.x.x, moment@^2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
@@ -3512,6 +3512,16 @@ react-native-experimental-navigation@0.26.x:
     fbjs "^0.8.1"
     react-addons-pure-render-mixin "^15.0.2"
 
+react-native-gifted-listview@0.0.15:
+  version "0.0.15"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-listview/-/react-native-gifted-listview-0.0.15.tgz#c92b5b7b32cea7705b727ab4bc199751379dce07"
+  dependencies:
+    react-native-gifted-spinner "^0.0.4"
+
+react-native-gifted-spinner@^0.0.4:
+  version "0.0.4"
+  resolved "https://registry.yarnpkg.com/react-native-gifted-spinner/-/react-native-gifted-spinner-0.0.4.tgz#32652b5a60423f14719a1c3125613299af0995f2"
+
 "react-native-google-analytics-bridge@git+https://github.com/mcnamee/react-native-google-analytics-bridge.git":
   version "4.0.2"
   resolved "git+https://github.com/mcnamee/react-native-google-analytics-bridge.git#20d805400e05cab2f7cb2e908df658954ee36b15"
@@ -3522,6 +3532,20 @@ react-native-infinite-scroll-view@^0.4.2:
   dependencies:
     react-clone-referenced-element "^1.0.1"
     react-native-scrollable-mixin "^1.0.0"
+
+react-native-parsed-text@0.0.16:
+  version "0.0.16"
+  resolved "https://registry.yarnpkg.com/react-native-parsed-text/-/react-native-parsed-text-0.0.16.tgz#788f6a51c3e2c224ad89101cc3d63f5993d37747"
+
+react-native-photo-browser@^0.2.2:
+  version "0.2.2"
+  resolved "https://registry.yarnpkg.com/react-native-photo-browser/-/react-native-photo-browser-0.2.2.tgz#f40601770c34472de20f917683f1d6e7b7b9d981"
+  dependencies:
+    react-native-progress "^3.0.0"
+
+react-native-progress@^3.0.0:
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/react-native-progress/-/react-native-progress-3.2.0.tgz#86d756be5537c09936ac3d3c4e23710da590743c"
 
 react-native-router-flux@^3.37.0:
   version "3.37.0"
