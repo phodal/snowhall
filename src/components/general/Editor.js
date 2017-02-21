@@ -18,12 +18,13 @@ export default class EditorComp extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      image: null
+      image: null,
+      imageWidth: 0,
+      imageHeight: 0,
     }
   }
 
   render() {
-    let that = this;
     return (
       <View>
         <TextInput
@@ -37,24 +38,23 @@ export default class EditorComp extends Component {
           <View style={styles.tool}>
             <Button
               icon={{name: 'camera'}}
-              onPress={this.pickUpImage.bind(that)}
+              onPress={this.pickUpImage.bind(this)}
             />
           </View>
           <View style={styles.tool}>
             <Icon name={'location-on'} size={26} color={'#CCC'}/>
           </View>
-          {this.state.image ?
-            <View>
-              <Image source={require(this.state.image)}/>
-            </View> : null
-          }
         </View>
+        {this.state.image === null ? null :
+          <View>
+            <Image source={{uri: this.state.image}} style={styles.image} />
+          </View>
+        }
       </View>
     )
   }
 
   pickUpImage() {
-    let that = this;
     let options = {
       title: '选择图片',
       takePhotoButtonTitle: '拍照',
@@ -79,8 +79,11 @@ export default class EditorComp extends Component {
         console.log('User tapped custom button: ', response.customButton);
       }
       else {
-        let source = { uri: response.uri };
-        that.state.image = source;
+        this.setState({
+          image: response.uri,
+          imageWidth: response.width,
+          imageHeight: response.height
+        });
       }
     });
   }
@@ -123,6 +126,10 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     marginLeft: 5,
     marginRight: 5
+  },
+  image:{
+    width: 120,
+    height: 120
   },
   toolText: {
     fontSize: 22,
