@@ -26,6 +26,7 @@ import {
 } from '@components/ui/';
 
 import ParsedText from 'react-native-parsed-text'
+import { Actions } from 'react-native-router-flux';
 import moment from "moment";
 
 const styles = StyleSheet.create({
@@ -144,7 +145,7 @@ let mockData = [
     "nickname": "Balzac",
     "avatar": "5",
     "text": "There is no such thing as a great talent without great will - power.",
-    "original_pic": "http://lorempixel.com/1000/700/nature/5/",
+    "original_pic": "http://articles.phodal.com/qrcode.jpg",
     "created_at": "1404707590"
   }];
 
@@ -230,7 +231,13 @@ class ShowView extends Component {
   }
 
   _renderMsgImage(info) {
-
+    if(info.original_pic) {
+      return (
+        <TouchableHighlight onPress={this._openPhotoBrowser.bind(this, info)}>
+          <Image source={{uri: info.original_pic}} style={[styles.msgImage, { resizeMode: Image.resizeMode.cover }]} />
+        </TouchableHighlight>
+      )
+    }
   }
 
   _handleUrlPress(url) {
@@ -242,7 +249,12 @@ class ShowView extends Component {
   }
 
   _openPhotoBrowser(info) {
-
+    Actions.photoBrowserView({
+      mediaList: [{
+        photo: info.original_pic,
+        caption: info.text
+      }]
+    });
   }
 }
 

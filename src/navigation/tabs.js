@@ -6,7 +6,6 @@ import { AppStyles, AppSizes } from '@theme/';
 
 import { TabIcon } from '@ui/';
 
-import StyleGuide from '@containers/StyleGuideView';
 import Recipes from '@containers/recipes/Browse/BrowseContainer';
 import RecipeView from '@containers/recipes/RecipeView';
 import UserCenter from '@containers/UserCenterView';

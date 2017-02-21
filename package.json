@@ -31,6 +31,7 @@
     "react-native-google-analytics-bridge": "git+https://github.com/mcnamee/react-native-google-analytics-bridge.git",
     "react-native-infinite-scroll-view": "^0.4.2",
     "react-native-parsed-text": "0.0.16",
+    "react-native-photo-browser": "^0.2.2",
     "react-native-router-flux": "^3.37.0",
     "react-native-side-menu": "^0.20.1",
     "react-native-swipe-cards": "^0.1.0",

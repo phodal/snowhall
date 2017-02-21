@@ -15,6 +15,7 @@ import AppLaunch from '@containers/Launch/LaunchContainer';
 import Placeholder from '@components/general/Placeholder';
 import AuthScenes from './auth';
 import TabsScenes from './tabs';
+import PhotoBrowserView from "../components/general/PhotoBrowserView";
 
 /* Routes ==================================================================== */
 export default Actions.create(
@@ -38,6 +39,13 @@ export default Actions.create(
       </Scene>
 
       {/* General */}
+      <Scene
+        key={'photoBrowserView'}
+        title={'查看照片'}
+        component={PhotoBrowserView}
+        analyticsDesc={'PhotoBrowserView: View Photo'}
+      />
+
       <Scene
         key={'comingSoon'}
         title={'Coming Soon'}
