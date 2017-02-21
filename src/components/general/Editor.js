@@ -6,17 +6,19 @@ import React, {
 import {
   View,
   Text,
+  Image,
   TextInput,
   TouchableHighlight,
   StyleSheet
 } from 'react-native'
-import { Icon } from 'react-native-elements';
+import { Icon, Button } from 'react-native-elements';
+var ImagePicker = require('react-native-image-picker');
 
 export default class EditorComp extends Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-
+      image: null
     }
   }
 
@@ -32,20 +34,54 @@ export default class EditorComp extends Component {
         />
         <View style={styles.toolbar}>
           <View style={styles.tool}>
-            <Icon name={'camera'} size={26} color={'#CCC'}/>
-          </View>
-          <View style={styles.tool}>
-            <Icon name={'face'} size={26} color={'#CCC'}/>
-          </View>
-          <View style={styles.tool}>
-            <Icon name={'email'} size={26} color={'#CCC'}/>
+            <Button
+              icon={{name: 'camera'}}
+              onPress={this.pickUpImage}
+            />
           </View>
           <View style={styles.tool}>
             <Icon name={'location-on'} size={26} color={'#CCC'}/>
           </View>
+          <View>
+            <Image source={this.state.image} />
+          </View>
         </View>
       </View>
     )
+  }
+
+  pickUpImage() {
+    let that = this;
+    let options = {
+      title: '选择图片',
+      takePhotoButtonTitle: '拍照',
+      chooseFromLibraryButtonTitle: '从相册选择',
+      cancelButtonTitle: '取消',
+      storageOptions: {
+        skipBackup: true,
+        path: 'images'
+      }
+    };
+
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      }
+      else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      }
+      else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      }
+      else {
+        let source = { uri: response.uri };
+        that.setState({
+          image: source
+        });
+      }
+    });
   }
 }
 
