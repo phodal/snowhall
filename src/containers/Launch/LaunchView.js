@@ -6,7 +6,7 @@
  * React Native Starter App
  * https://github.com/mcnamee/react-native-starter-app
  */
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 import {
   View,
   Image,
@@ -14,10 +14,10 @@ import {
   StyleSheet,
   ActivityIndicator,
 } from 'react-native';
-import { Actions } from 'react-native-router-flux';
+import {Actions} from 'react-native-router-flux';
 
 // Consts and Libs
-import { AppStyles, AppSizes } from '@theme/';
+import {AppStyles, AppSizes} from '@theme/';
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
@@ -41,10 +41,10 @@ class AppLaunch extends Component {
 
     // Try to authenticate based on existing token
     this.props.login()
-      // Logged in, show index screen
-      .then(() => Actions.app({ type: 'reset' }))
+    // Logged in, show index screen
+      .then(() => Actions.app({type: 'reset'}))
       // Not Logged in, show Login screen
-      .catch(() => Actions.authenticate({ type: 'reset' }));
+      .catch(() => Actions.authenticate({type: 'reset'}));
   }
 
   render = () => (

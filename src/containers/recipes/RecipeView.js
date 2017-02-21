@@ -40,7 +40,7 @@ class RecipeView extends Component {
       featured_image: PropTypes.string,
       acf: PropTypes.object,
     }).isRequired,
-  }
+  };
 
   /**
     * Ingredients
@@ -62,7 +62,7 @@ class RecipeView extends Component {
     });
 
     return ingJsx;
-  }
+  };
 
   /**
     * Method

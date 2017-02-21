@@ -35,7 +35,7 @@ class MealListing extends Component {
 
   static propTypes = {
     meal: PropTypes.string.isRequired,
-  }
+  };
 
   constructor() {
     super();
@@ -63,12 +63,6 @@ class MealListing extends Component {
     if (options && options.reFetch) {
       this.setState({
         page: 1
-      })
-    }
-
-    if(this.state.page > 1) {
-      this.setState({
-        loadingMore: true
       })
     }
 
