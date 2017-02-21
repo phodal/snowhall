@@ -3081,7 +3081,7 @@ mkdirp@^0.5.0, mkdirp@^0.5.1:
   dependencies:
     minimist "0.0.8"
 
-moment@2.x.x, moment@^2.17.1:
+moment@2.x.x, moment@>=2.10.3, moment@^2.17.1:
   version "2.17.1"
   resolved "https://registry.yarnpkg.com/moment/-/moment-2.17.1.tgz#fed9506063f36b10f066c8b59a144d7faebe1d82"
 
@@ -3490,13 +3490,19 @@ react-deep-force-update@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/react-deep-force-update/-/react-deep-force-update-1.0.1.tgz#f911b5be1d2a6fe387507dd6e9a767aa2924b4c7"
 
+react-native-calendar@^0.10.0:
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/react-native-calendar/-/react-native-calendar-0.10.0.tgz#05a1d2fcefbdcd29b20cfc7f2536070aaa743724"
+  dependencies:
+    moment ">=2.10.3"
+
 react-native-device-info@^0.9.6:
   version "0.9.9"
   resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-0.9.9.tgz#42490719b8be2b8ffe689f3c74d56884ca05c0d7"
 
-react-native-elements@^0.9.2:
-  version "0.9.6"
-  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.9.6.tgz#9df2f3323fad492f3ba602592f5c8705af36cae7"
+react-native-elements@^0.9.7:
+  version "0.9.7"
+  resolved "https://registry.yarnpkg.com/react-native-elements/-/react-native-elements-0.9.7.tgz#b6c8164a50031c755afb18094b115c2955f66195"
   dependencies:
     react-native-side-menu "^0.20.1"
     react-native-tab-navigator "^0.3.3"
@@ -3525,6 +3531,10 @@ react-native-gifted-spinner@^0.0.4:
 "react-native-google-analytics-bridge@git+https://github.com/mcnamee/react-native-google-analytics-bridge.git":
   version "4.0.2"
   resolved "git+https://github.com/mcnamee/react-native-google-analytics-bridge.git#20d805400e05cab2f7cb2e908df658954ee36b15"
+
+react-native-image-picker@^0.25.5:
+  version "0.25.5"
+  resolved "https://registry.yarnpkg.com/react-native-image-picker/-/react-native-image-picker-0.25.5.tgz#62b12f98bb4b4bf0a7ac6fde7977896f7944b500"
 
 react-native-infinite-scroll-view@^0.4.2:
   version "0.4.2"
