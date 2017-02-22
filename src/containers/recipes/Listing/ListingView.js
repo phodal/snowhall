@@ -17,7 +17,7 @@ import { AppColors, AppStyles } from '@theme/';
 import { ErrorMessages } from '@constants/';
 
 // Containers
-import RecipeCard from '@containers/recipes/Card/CardContainer';
+import CardContainer from '@containers/recipes/Card/CardContainer';
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 
 // Components
@@ -70,7 +70,7 @@ class ListingView extends Component {
     if (this.props.reFetch) {
       this.setState({ isRefreshing: true });
 
-      this.props.reFetch({ reFetch: true })
+      this.props.reFetch()
         .then(() => {
           this.setState({ isRefreshing: false });
         });
@@ -99,7 +99,7 @@ class ListingView extends Component {
         <ListView
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
-          renderRow={recipe => <RecipeCard recipe={recipe} />}
+          renderRow={recipe => <CardContainer recipe={recipe} />}
           dataSource={dataSource}
           canLoadMore={canLoadMoreContent}
           onLoadMoreAsync={this.onLoadMoreAsync}

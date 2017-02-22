@@ -60,26 +60,18 @@ class ListingContainer extends Component {
     */
   fetchRecipes = (options) => {
     const {meal} = this.props;
-    if (options && options.reFetch) {
-      this.setState({
-        page: 1,
-        recipes: []
-      })
-    } else {
-      let page = this.state.page + 1;
-      this.setState({
-        page: page
-      })
+    let page = 1;
+    if(options && options.page) {
+      page = options.page;
     }
 
-    // Forgot to pass in a category?
     if (!meal) {
       this.setState({
         error: ErrorMessages.missingMealId,
       });
     }
 
-    return AppAPI.recipes.get({categories: meal, page: this.state.page})
+    return AppAPI.recipes.get({categories: meal, page: page})
       .then((res) => {
         let _canLoadMoreContent = this.haveLoadMoreContent(res);
 
@@ -115,16 +107,20 @@ class ListingContainer extends Component {
     return _canLoadMoreContent;
   }
 
-  _loadMoreContentAsync = async () => {
-    this.setState({
-      canLoadMoreContent: false,
-    });
+  initializeFetch () {
+    this.fetchRecipes({reFetch: true});
+  }
 
-    if (this.state.loadingMore === false) {
+  _loadMoreContentAsync = async () => {
+    if (!this.state.loadingMore) {
+      let page = this.state.page + 1;
+
       this.setState({
-        loadingMore: true
+        page: page,
+        loadingMore: true,
+        canLoadMoreContent: false
       });
-      this.fetchRecipes();
+      this.fetchRecipes({page: page});
     }
   };
 
@@ -139,7 +135,7 @@ class ListingContainer extends Component {
         recipes={recipes}
         canLoadMoreContent={canLoadMoreContent}
         onLoadMoreAsync={this._loadMoreContentAsync}
-        reFetch={this.fetchRecipes}
+        reFetch={this.initializeFetch}
       />
     );
   }
