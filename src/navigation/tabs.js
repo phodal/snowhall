@@ -4,7 +4,7 @@ import {AppConfig} from "@constants/";
 import {AppStyles, AppSizes} from "@theme/";
 import {TabIcon} from "@ui/";
 import Recipes from "@containers/recipes/Browse/BrowseContainer";
-import RecipeView from "@containers/recipes/RecipeView";
+import RecipeView from "@containers/recipes/DetailView";
 import UserCenter from "@containers/UserCenterView";
 import DatingView from "../containers/dating/DatingView";
 import ShowView from "../containers/show/ShowView";
@@ -40,7 +40,7 @@ const scenes = (
         key={'recipeView'}
         component={RecipeView}
         getTitle={props => ((props.title) ? props.title : '文章')}
-        analyticsDesc={'RecipeView: View Recipe'}
+        analyticsDesc={'DetailView: View Recipe'}
       />
     </Scene>
 

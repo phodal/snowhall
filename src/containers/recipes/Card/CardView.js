@@ -6,14 +6,14 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { Tile
-} from 'react-native-elements';
+
+import { Card, Tile } from 'react-native-elements';
 
 // Consts and Libs
 import { AppStyles } from '@theme/';
 
 // Components
-import { Card, Spacer } from '@ui/';
+import { Spacer } from '@ui/';
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
@@ -43,7 +43,7 @@ class RecipeCard extends Component {
     let width = Dimensions.get('window').width;
 
     return (
-      <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
+      <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
         {image && { uri: image } !== '' ?
             <View>
               <Tile
