@@ -32,10 +32,9 @@ class Authenticate extends Component {
       source={require('../../images/login.jpg')}
       style={[AppStyles.containerCentered, AppStyles.container, styles.background]}
     >
-      <Image
-        source={require('../../images/logo.png')}
-        style={[styles.logo]}
-      />
+      <Text h1 style={[AppStyles.textCenterAligned, styles.whiteText]}> 『Snowhall』</Text>
+
+      <Spacer size={20} />
 
       <View style={[AppStyles.row, AppStyles.paddingHorizontal]}>
         <View style={[AppStyles.flex1]}>
