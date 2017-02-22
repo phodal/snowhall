@@ -5,7 +5,7 @@ import {AppStyles, AppSizes} from "@theme/";
 import {TabIcon} from "@ui/";
 import Recipes from "@containers/recipes/Browse/BrowseContainer";
 import RecipeView from "@containers/recipes/DetailView";
-import UserCenter from "@containers/UserCenterView";
+import UserCenter from "@containers/user-center/UserCenterView";
 import DatingView from "../containers/dating/DatingView";
 import ShowView from "../containers/show/ShowView";
 import MeetupView from "../containers/meetup/MeetupView";
