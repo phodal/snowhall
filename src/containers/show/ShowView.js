@@ -118,25 +118,25 @@ const styles = StyleSheet.create({
 let mockData = [
   {
     "id": "41",
-    "nickname": "Bob Brown",
+    "nickname": "Phodal Huang",
     "avatar": "http://articles.phodal.com/qrcode.jpg",
-    "text": "Behind every successful man there's a lot u unsuccessful years. https://www.phodal.com/",
+    "text": "待我代码编成，娶你为妻可好",
     "original_pic": "",
     "created_at": "1404709434"
   },
   {
     "id": "40",
-    "nickname": "Jean Kerr",
+    "nickname": "Phodal Huang",
     "avatar": "http://articles.phodal.com/qrcode.jpg",
-    "text": "I think success has no rules, but you can learn a lot from failure. ",
+    "text": "the only fair is no fair",
     "original_pic": "",
     "created_at": "1404708544"
   },
   {
     "id": "38",
-    "nickname": "Balzac",
+    "nickname": "Phodal Huang",
     "avatar": "http://articles.phodal.com/qrcode.jpg",
-    "text": "There is no such thing as a great talent without great will - power.",
+    "text": "WTF",
     "original_pic": "http://articles.phodal.com/qrcode.jpg",
     "created_at": "1404707590"
   }];
