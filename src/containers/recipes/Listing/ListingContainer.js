@@ -30,8 +30,8 @@ const mapDispatchToProps = {
 };
 
 /* Component ==================================================================== */
-class MealListing extends Component {
-  static componentName = 'MealListing';
+class ListingContainer extends Component {
+  static componentName = 'ListingContainer';
 
   static propTypes = {
     meal: PropTypes.string.isRequired,
@@ -145,4 +145,4 @@ class MealListing extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MealListing);
+export default connect(mapStateToProps, mapDispatchToProps)(ListingContainer);

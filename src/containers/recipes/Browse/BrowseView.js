@@ -18,7 +18,7 @@ import { AppColors } from '@theme/';
 import AppAPI from '@lib/api';
 
 // Containers
-import RecipeListing from '@containers/recipes/Listing/ListingContainer';
+import ListingContainer from '@containers/recipes/Listing/ListingContainer';
 
 // Components
 import { Text } from '@ui/';
@@ -158,7 +158,7 @@ class RecipeTabs extends Component {
     // Which component should be loaded?
     return (
       <View style={styles.tabContainer}>
-        <RecipeListing
+        <ListingContainer
           meal={route.id}
         />
       </View>
