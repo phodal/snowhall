@@ -31,7 +31,8 @@ export function login(credentials, freshLogin) {
 
         // Get user details from API, using my token
         return AppAPI.users.get(decodedToken.data.user.id)
-          .then((userData) => {
+          .then((response) => {
+            let userData = response.res;
             dispatch({
               type: 'USER_REPLACE',
               data: userData,
