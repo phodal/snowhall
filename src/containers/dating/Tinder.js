@@ -10,15 +10,22 @@ import SwipeCards from 'react-native-swipe-cards';
 let Card = React.createClass({
   render() {
     return (
-      <Tile
-        imageSrc={require('../../images/demo-tile.jpg')}
-        title={this.props.text}
-        titleStyle={{color: this.props.backgroundColor}}
-        featured
-        width={250}
-        height={350}
-        caption="this is a test"
-      />
+      <View>
+        <Tile
+          imageSrc={require('../../images/demo-tile.jpg')}
+          title={this.props.text}
+          titleStyle={{color: this.props.backgroundColor}}
+          featured
+          width={250}
+          height={350}
+          caption="this is a test"
+        />
+
+        <Text>草仲马</Text>
+        <Text>2x岁</Text>
+        <Text>160cm</Text>
+        <Text>10k</Text>
+      </View>
     )
   }
 });
@@ -48,11 +55,8 @@ export default React.createClass({
       cards: Cards
     }
   },
-  handleYup (card) {
-    console.log(`Yup for ${card.text}`)
-  },
-  handleNope (card) {
-    console.log(`Nope for ${card.text}`)
+  gotoUserDetail () {
+
   },
   render() {
     return (
@@ -61,6 +65,9 @@ export default React.createClass({
 
         renderCard={(cardData) => <Card {...cardData} />}
         renderNoMoreCards={() => <NoMoreCards />}
+        showYup={false}
+        showNope={false}
+        onClickHandler={this.gotoUserDetail.bind(this)}
       />
     )
   }
