@@ -42,7 +42,8 @@ export default Actions.create(
       {/* General */}
       <Scene
         key={'photoBrowserView'}
-        title={'查看照片'}
+        hideTabBar={true}
+        hideNavBar={true}
         component={PhotoBrowserView}
         analyticsDesc={'PhotoBrowserView: View Photo'}
       />

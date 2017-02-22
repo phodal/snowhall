@@ -24,19 +24,11 @@ export default class PhotoBrowserView extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        <PhotoBrowser
-          mediaList={this.props.mediaList}
-          enableGrid={false}
-          useCircleProgress
-        />
-      </View>
+      <PhotoBrowser
+        mediaList={this.props.mediaList}
+        enableGrid={false}
+        useCircleProgress
+      />
     )
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flexGrow: 1
-  }
-});
