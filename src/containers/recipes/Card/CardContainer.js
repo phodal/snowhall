@@ -29,8 +29,8 @@ const mapDispatchToProps = {
 };
 
 /* Component ==================================================================== */
-class RecipeCard extends Component {
-  static componentName = 'RecipeCard';
+class CardContainer extends Component {
+  static componentName = 'CardContainer';
 
   static propTypes = {
     recipe: PropTypes.shape({
@@ -179,4 +179,4 @@ class RecipeCard extends Component {
 }
 
 /* Export Component ==================================================================== */
-export default connect(mapStateToProps, mapDispatchToProps)(RecipeCard);
+export default connect(mapStateToProps, mapDispatchToProps)(CardContainer);

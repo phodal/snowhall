@@ -26,7 +26,7 @@ const styles = StyleSheet.create({
 
 /* Component ==================================================================== */
 class RecipeCard extends Component {
-  static componentName = 'RecipeCard';
+  static componentName = 'CardContainer';
 
   static propTypes = {
     image: PropTypes.string.isRequired,
