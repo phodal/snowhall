@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import {
   View,
   Alert,
@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
-import { AppColors, AppStyles } from '@theme/';
+import { SearchBar } from 'react-native-elements'
+import {AppColors, AppStyles} from '@theme/';
 
 import {
   Alerts,
@@ -48,14 +49,23 @@ class DatingView extends Component {
 
   render = () => (
     <View style={styles.tabContainer}>
+      <SearchBar
+        lightTheme
+        onChangeText={this.changeText.bind(this)}
+        placeholder='Type Here...'/>
+
       <ScrollView
         automaticallyAdjustContentInsets={false}
         style={[AppStyles.container]}
       >
-        <Tinder style={{flex: 1}} />
+        <Tinder style={{flex: 1}}/>
       </ScrollView>
     </View>
-  )
+  );
+
+  changeText() {
+
+  }
 }
 
 export default DatingView;
