@@ -24,8 +24,8 @@ import InfiniteScrollView from 'react-native-infinite-scroll-view';
 import Error from '@components/general/Error';
 
 /* Component ==================================================================== */
-class RecipeListing extends Component {
-  static componentName = 'RecipeListing';
+class ListingView extends Component {
+  static componentName = 'ListingView';
 
   static propTypes = {
     recipes: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -119,4 +119,4 @@ class RecipeListing extends Component {
 }
 
 /* Export Component ==================================================================== */
-export default RecipeListing;
+export default ListingView;

@@ -17,7 +17,7 @@ import { ErrorMessages } from '@constants/';
 // Components
 import Error from '@components/general/Error';
 import Loading from '@components/general/Loading';
-import RecipeListingRender from './ListingView';
+import ListingView from './ListingView';
 
 /* Redux ==================================================================== */
 // What data from the store shall we send to the component?
@@ -135,7 +135,7 @@ class MealListing extends Component {
     if (error) return <Error text={error} />;
 
     return (
-      <RecipeListingRender
+      <ListingView
         recipes={recipes}
         canLoadMoreContent={canLoadMoreContent}
         onLoadMoreAsync={this._loadMoreContentAsync}
