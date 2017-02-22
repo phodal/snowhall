@@ -62,7 +62,13 @@ class MealListing extends Component {
     const {meal} = this.props;
     if (options && options.reFetch) {
       this.setState({
-        page: 1
+        page: 1,
+        recipes: []
+      })
+    } else {
+      let page = this.state.page + 1;
+      this.setState({
+        page: page
       })
     }
 
@@ -110,10 +116,7 @@ class MealListing extends Component {
   }
 
   _loadMoreContentAsync = async () => {
-    let page = this.state.page + 1;
-
     this.setState({
-      page: page,
       canLoadMoreContent: false,
     });
 
