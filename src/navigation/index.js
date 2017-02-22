@@ -63,13 +63,13 @@ export default Actions.create(
         component={TweetEditView}
         analyticsDesc={'TweetEditView: Open View'}
       />
-
-      <Scene
-        key={'comingSoon'}
-        title={'Coming Soon'}
-        component={Placeholder}
-        analyticsDesc={'Placeholder: Coming Soon'}
-      />
     </Scene>
+
+    <Scene
+      key={'comingSoon'}
+      title={'Coming Soon'}
+      component={Placeholder}
+      analyticsDesc={'Placeholder: Coming Soon'}
+    />
   </Scene>,
 );

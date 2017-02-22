@@ -1,11 +1,3 @@
-/**
- * Authenticate Screen
- *  - Entry screen for all authentication
- *  - User can tap to login, forget password, signup...
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
 import React, { Component } from 'react';
 import {
   View,
@@ -14,13 +6,9 @@ import {
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 
-// Consts and Libs
 import { AppStyles, AppSizes } from '@theme/';
-
-// Components
 import { Spacer, Text, Button } from '@ui/';
 
-/* Styles ==================================================================== */
 const styles = StyleSheet.create({
   background: {
     backgroundColor: 'transparent',
@@ -36,7 +24,6 @@ const styles = StyleSheet.create({
   },
 });
 
-/* Component ==================================================================== */
 class Authenticate extends Component {
   static componentName = 'Authenticate';
 
@@ -107,5 +94,4 @@ class Authenticate extends Component {
   )
 }
 
-/* Export Component ==================================================================== */
 export default Authenticate;
