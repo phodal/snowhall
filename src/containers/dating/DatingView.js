@@ -49,11 +49,6 @@ class DatingView extends Component {
 
   render = () => (
     <View style={styles.tabContainer}>
-      {/*<SearchBar*/}
-        {/*lightTheme*/}
-        {/*onChangeText={this.changeText.bind(this)}*/}
-        {/*placeholder='Type Here...'/>*/}
-
       <ScrollView
         automaticallyAdjustContentInsets={false}
         style={[AppStyles.container]}

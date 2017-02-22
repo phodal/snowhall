@@ -12,7 +12,7 @@ let Card = React.createClass({
     return (
       <View>
         <Tile
-          imageSrc={require('../../images/demo-tile.jpg')}
+          imageSrc={{require: ('../../images/demo-tile.jpg')}}
           title={this.props.text}
           titleStyle={{color: this.props.backgroundColor}}
           featured
