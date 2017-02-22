@@ -26,17 +26,16 @@ class Login extends Component {
 
   static propTypes = {
     login: PropTypes.func.isRequired,
-  }
+  };
 
   constructor(props) {
     super(props);
 
-    // Email Validation
-    const validEmail = FormValidation.refinement(
-      FormValidation.String, (email) => {
-        const regularExpression = /^.+@.+\..+$/i;
-
-        return regularExpression.test(email);
+    // Username Validation
+    const validUsername = FormValidation.refinement(
+      FormValidation.String, (username) => {
+        if (username.length < 6) return false;
+        return true;
       },
     );
 
@@ -55,22 +54,25 @@ class Login extends Component {
         error: '',
       },
       form_fields: FormValidation.struct({
-        Email: validEmail,
+        Username: validUsername,
         Password: validPassword,
       }),
       empty_form_values: {
-        Email: '',
+        Username: '',
         Password: '',
       },
       form_values: {},
       options: {
+        auto: 'placeholders',
         fields: {
-          Email: {
+          Username: {
+            surname: '用户名',
             error: '请输入一个有效的邮箱',
             autoCapitalize: 'none',
             clearButtonMode: 'while-editing',
           },
           Password: {
+            surname: '密码',
             error: '你的新密码应该大于 6 位',
             clearButtonMode: 'while-editing',
             secureTextEntry: true,
@@ -88,12 +90,12 @@ class Login extends Component {
     if (values !== null) {
       this.setState({
         form_values: {
-          Email: jsonValues.username,
+          Username: jsonValues.username,
           Password: jsonValues.password,
         },
       });
     }
-  }
+  };
 
   /**
     * Login
@@ -113,7 +115,7 @@ class Login extends Component {
         }
 
         this.props.login({
-          username: credentials.Email,
+          username: credentials.Username,
           password: credentials.Password,
         }, true).then(() => {
           this.setState({
@@ -129,7 +131,7 @@ class Login extends Component {
         });
       });
     }
-  }
+  };
 
   render = () => {
     const Form = FormValidation.form.Form;
@@ -139,7 +141,7 @@ class Login extends Component {
         automaticallyAdjustContentInsets={false}
         ref={(a) => { this.scrollView = a; }}
         style={[AppStyles.container]}
-        contentContainerStyle={[AppStyles.container]}
+        contentContainerStyle={[  AppStyles.container]}
       >
         <Card>
           <Alerts

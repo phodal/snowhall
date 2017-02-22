@@ -1,17 +1,7 @@
-/**
- * User Actions
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
-
 import jwtDecode from 'jwt-decode';
 
 import AppAPI from '@lib/api';
 
-/**
-  * Login to API and receive Token
-  */
 export function login(credentials, freshLogin) {
   return dispatch => new Promise(async (resolve, reject) => {
     const userCreds = credentials || null;

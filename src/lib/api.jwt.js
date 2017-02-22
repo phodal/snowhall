@@ -49,7 +49,8 @@ export default class JWT {
     return AppAPI[APIConfig.tokenKey].post(null, {
       username: this.apiCredentials.username,
       password: this.apiCredentials.password,
-    }).then(async (res) => {
+    }).then(async (response) => {
+      let res = response.res;
       if (!res.token) {
         return reject(res);
       }
