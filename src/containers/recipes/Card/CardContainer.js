@@ -15,7 +15,7 @@ import * as UserActions from '@redux/user/actions';
 import AppUtil from '@lib/util';
 
 // Components
-import RecipeCardRender from './CardView';
+import CardView from './CardView';
 
 /* Redux ==================================================================== */
 // What data from the store shall we send to the component?
@@ -165,7 +165,7 @@ class CardContainer extends Component {
     const { user } = this.props;
 
     return (
-      <RecipeCardRender
+      <CardView
         image={recipe.image}
         title={recipe.title}
         date={recipe.date}

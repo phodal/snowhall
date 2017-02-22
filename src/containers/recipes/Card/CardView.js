@@ -25,8 +25,8 @@ const styles = StyleSheet.create({
 });
 
 /* Component ==================================================================== */
-class RecipeCard extends Component {
-  static componentName = 'CardContainer';
+class CardView extends Component {
+  static componentName = 'CardView';
 
   static propTypes = {
     image: PropTypes.string.isRequired,
@@ -73,4 +73,4 @@ class RecipeCard extends Component {
 }
 
 /* Export Component ==================================================================== */
-export default RecipeCard;
+export default CardView;
