@@ -3,15 +3,17 @@ import {
   View,
   Text,
   StyleSheet,
+  Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { Icon } from 'react-native-elements';
+import { Tile
+} from 'react-native-elements';
 
 // Consts and Libs
 import { AppStyles } from '@theme/';
 
 // Components
-import { Card } from '@ui/';
+import { Card, Spacer } from '@ui/';
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
@@ -37,34 +39,34 @@ class RecipeCard extends Component {
   }
 
   render = () => {
-    const { title, content, image, onPress, onPressFavourite, isFavourite, date } = this.props;
+    const { title, content, image, onPress, date } = this.props;
+    let width = Dimensions.get('window').width;
 
     return (
       <TouchableOpacity activeOpacity={0.8} onPress={onPress}>
-        <Card image={image && { uri: image }}>
-          <View style={[AppStyles.paddingBottomSml]}>
-            <Text>{title}</Text>
-            <Text>{date}</Text>
-            <Text>{content}</Text>
+        {image && { uri: image } !== '' ?
+            <View>
+              <Tile
+                imageSrc={{ uri: image }}
+                title={title}
+                onPress={onPress}
+                featured
+                height={width*0.6}
+                caption={content}
+              />
 
-            {!!onPressFavourite &&
-              <TouchableOpacity
-                activeOpacity={0.8}
-                onPress={onPressFavourite}
-                style={[styles.favourite]}
-              >
-                <Icon
-                  raised
-                  name={'star-border'}
-                  color={isFavourite ? '#FFFFFF' : '#FDC12D'}
-                  containerStyle={{
-                    backgroundColor: isFavourite ? '#FDC12D' : '#FFFFFF',
-                  }}
-                />
-              </TouchableOpacity>
-            }
-          </View>
-        </Card>
+              <Spacer size={20} />
+            </View>
+          :
+
+          <Card image={image && { uri: image }}>
+            <View style={[AppStyles.paddingBottomSml]}>
+              <Text>{title}</Text>
+              <Text>{date}</Text>
+              <Text>{content}</Text>
+            </View>
+          </Card>
+        }
       </TouchableOpacity>
     );
   }
