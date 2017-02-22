@@ -4,17 +4,24 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 
+import { Tile } from 'react-native-elements';
 import SwipeCards from 'react-native-swipe-cards';
 
 let Card = React.createClass({
   render() {
     return (
-      <View style={[styles.card, {backgroundColor: this.props.backgroundColor}]}>
-        <Text>{this.props.text}</Text>
-      </View>
+      <Tile
+        imageSrc={require('../../images/demo-tile.jpg')}
+        title={this.props.text}
+        titleStyle={{color: this.props.backgroundColor}}
+        featured
+        width={250}
+        height={350}
+        caption="this is a test"
+      />
     )
   }
-})
+});
 
 const Cards = [
   {text: 'Tomato', backgroundColor: 'red'},
@@ -23,7 +30,7 @@ const Cards = [
   {text: 'Blueberry', backgroundColor: 'blue'},
   {text: 'Umm...', backgroundColor: 'cyan'},
   {text: 'orange', backgroundColor: 'orange'},
-]
+];
 
 let NoMoreCards = React.createClass({
   render() {
@@ -33,7 +40,7 @@ let NoMoreCards = React.createClass({
       </View>
     )
   }
-})
+});
 
 export default React.createClass({
   getInitialState() {
@@ -54,9 +61,6 @@ export default React.createClass({
 
         renderCard={(cardData) => <Card {...cardData} />}
         renderNoMoreCards={() => <NoMoreCards />}
-
-        handleYup={this.handleYup}
-        handleNope={this.handleNope}
       />
     )
   }
@@ -67,7 +71,11 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    width: 300,
-    height: 300,
+    width: 250,
+    height: 350,
+  },
+  tile: {
+    width: 250,
+    height: 350,
   }
-})
+});
