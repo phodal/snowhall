@@ -27,6 +27,13 @@ const styles = StyleSheet.create({
 class Authenticate extends Component {
   static componentName = 'Authenticate';
 
+  gotoVmap(){
+    Actions.webView({
+      onNavigationStateChange: () => {},
+      url: 'http://vmap.phodal.com/'
+    })
+  }
+
   render = () => (
     <Image
       source={require('../../images/login.jpg')}
@@ -67,7 +74,7 @@ class Authenticate extends Component {
         <View style={[AppStyles.flex2]}>
           <Button
             title={'找个程序员修电脑'}
-            onPress={Actions.comingSoon}
+            onPress={this.gotoVmap}
             backgroundColor={'transparent'}
             raised={false}
           />
