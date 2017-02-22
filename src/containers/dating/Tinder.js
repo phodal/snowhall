@@ -4,7 +4,7 @@
 import React from 'react';
 import {StyleSheet, Text, View, Image} from 'react-native';
 
-import { Tile } from 'react-native-elements';
+import {Tile} from 'react-native-elements';
 import SwipeCards from 'react-native-swipe-cards';
 
 let Card = React.createClass({
@@ -20,11 +20,12 @@ let Card = React.createClass({
           height={350}
           caption="this is a test"
         />
-
-        <Text>草仲马</Text>
-        <Text>2x岁</Text>
-        <Text>160cm</Text>
-        <Text>10k</Text>
+        <View style={{flex: 1, flexDirection: 'row', justifyContent: 'space-between'}}>
+          <Text>草仲马</Text>
+          <Text>2x岁</Text>
+          <Text>160cm</Text>
+          <Text>10k</Text>
+        </View>
       </View>
     )
   }
@@ -55,9 +56,11 @@ export default React.createClass({
       cards: Cards
     }
   },
+
   gotoUserDetail () {
 
   },
+
   render() {
     return (
       <SwipeCards
@@ -67,7 +70,7 @@ export default React.createClass({
         renderNoMoreCards={() => <NoMoreCards />}
         showYup={false}
         showNope={false}
-        onClickHandler={this.gotoUserDetail.bind(this)}
+        onClickHandler={this.gotoUserDetail}
       />
     )
   }
