@@ -107,10 +107,6 @@ class ListingContainer extends Component {
     return _canLoadMoreContent;
   }
 
-  initializeFetch () {
-    this.fetchRecipes({reFetch: true});
-  }
-
   _loadMoreContentAsync = async () => {
     if (!this.state.loadingMore) {
       let page = this.state.page + 1;
@@ -135,7 +131,7 @@ class ListingContainer extends Component {
         recipes={recipes}
         canLoadMoreContent={canLoadMoreContent}
         onLoadMoreAsync={this._loadMoreContentAsync}
-        reFetch={this.initializeFetch}
+        reFetch={this.fetchRecipes}
       />
     );
   }
