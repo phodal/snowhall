@@ -45,12 +45,12 @@ const scenes = (
     </Scene>
 
     <Scene
-      key={'timeline'}
+      key={'datingView'}
       {...navbarPropsTabs}
       title={'寻'}
       component={DatingView}
       icon={props => TabIcon({ ...props, icon: 'wc' })}
-      analyticsDesc={'Placeholder: Coming Soon'}
+      analyticsDesc={'DatingView: Coming Soon'}
     />
 
     <Scene
@@ -73,7 +73,7 @@ const scenes = (
       title={'约'}
       component={MeetupView}
       icon={props => TabIcon({ ...props, icon: 'dashboard' })}
-      analyticsDesc={'MeetupView: Style Guide'}
+      analyticsDesc={'MeetupView: Meetup'}
     />
 
     <Scene
@@ -82,7 +82,7 @@ const scenes = (
       title={'我'}
       component={UserCenter}
       icon={props => TabIcon({ ...props, icon: 'people' })}
-      analyticsDesc={'User: User Center'}
+      analyticsDesc={'UserCenter: User Center'}
     />
   </Scene>
 );
