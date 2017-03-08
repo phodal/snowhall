@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
   },
 });
 
-class DatingView extends Component {
-  static componentName = 'DatingView';
+class FindView extends Component {
+  static componentName = 'FindView';
   state = {
     index: 0,
     routes: [
@@ -76,4 +76,4 @@ class DatingView extends Component {
   );
 }
 
-export default DatingView;
+export default FindView;

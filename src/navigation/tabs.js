@@ -6,9 +6,9 @@ import {TabIcon} from "@ui/";
 import Recipes from "@containers/recipes/Browse/BrowseContainer";
 import RecipeView from "@containers/recipes/DetailView";
 import UserCenter from "@containers/user-center/UserCenterView";
-import DatingView from "../containers/dating/DatingView";
 import ShowView from "../containers/show/ShowView";
 import StacksView from "../containers/stacks/StacksView";
+import FindView from "../containers/find/FindView";
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -46,10 +46,10 @@ const scenes = (
     <Scene
       key={'datingView'}
       {...navbarPropsTabs}
-      title={'寻'}
-      component={DatingView}
+      title={'寻找'}
+      component={FindView}
       icon={props => TabIcon({ ...props, icon: 'wc' })}
-      analyticsDesc={'DatingView: Coming Soon'}
+      analyticsDesc={'FindView: Coming Soon'}
     />
 
     <Scene
