@@ -128,7 +128,7 @@ let mockData = [
     "id": "40",
     "nickname": "Phodal Huang",
     "avatar": "http://articles.phodal.com/qrcode.jpg",
-    "text": "the only fair is no fair",
+    "text": "the only fair is no fair https://www.phodal.com/",
     "original_pic": "",
     "created_at": "1404708544"
   },
