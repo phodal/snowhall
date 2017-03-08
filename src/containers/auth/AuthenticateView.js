@@ -11,7 +11,7 @@ import { Spacer, Text, Button } from '@ui/';
 
 const styles = StyleSheet.create({
   background: {
-    backgroundColor: 'transparent',
+    backgroundColor: '#00C78C',
     height: AppSizes.screen.height,
     width: AppSizes.screen.width,
   },
@@ -35,11 +35,10 @@ class Authenticate extends Component {
   }
 
   render = () => (
-    <Image
-      source={require('../../images/login.jpg')}
+    <View
       style={[AppStyles.containerCentered, AppStyles.container, styles.background]}
     >
-      <Text h1 style={[AppStyles.textCenterAligned, styles.whiteText]}> 『Snowhall』</Text>
+      <Text h1 style={[AppStyles.textCenterAligned, styles.whiteText]}>玩 我</Text>
 
       <Spacer size={20} />
 
@@ -66,7 +65,7 @@ class Authenticate extends Component {
       <Spacer size={5} />
 
       <Text p style={[AppStyles.textCenterAligned, styles.whiteText]}>
-        . . . . .  . . - - -  - - - - -
+        --- --- ---
       </Text>
 
       <View style={[AppStyles.row, AppStyles.paddingHorizontal]}>
@@ -96,7 +95,7 @@ class Authenticate extends Component {
       </View>
 
       <Spacer size={40} />
-    </Image>
+    </View>
   )
 }
 
