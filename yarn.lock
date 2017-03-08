@@ -3598,6 +3598,10 @@ react-native-side-menu@^0.20.1:
   version "0.20.1"
   resolved "https://registry.yarnpkg.com/react-native-side-menu/-/react-native-side-menu-0.20.1.tgz#df21b4bb9d8a1aa3bae53d74ddf8a739eb59bfc5"
 
+react-native-splash-screen@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-splash-screen/-/react-native-splash-screen-2.0.0.tgz#d03caaef7d92a0ac1eab60ee4204a1d6bf8234ec"
+
 react-native-svg@^5.1.5:
   version "5.1.5"
   resolved "https://registry.yarnpkg.com/react-native-svg/-/react-native-svg-5.1.5.tgz#1925aa4c400ee7c190e510bbadbca96ceb0751d5"

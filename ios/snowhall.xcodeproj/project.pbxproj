@@ -42,6 +42,7 @@
 		E886AB811E5E73FA001634FF /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E886AB801E5E73FA001634FF /* CoreData.framework */; };
 		ED316DAF46114D5D8D4065AF /* libRCTGoogleAnalyticsBridge.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 094109103FE34882A8AEDB5E /* libRCTGoogleAnalyticsBridge.a */; };
 		EA58A63AFBB44989A935B2B3 /* libRNSVG.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 304E8741127E483194B0A724 /* libRNSVG.a */; };
+		99CC239C77C8480AA5799F42 /* libSplashScreen.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B092ED872FB64800B09F75EB /* libSplashScreen.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -304,6 +305,8 @@
 		F0475C4E87EA41B7BE88DDA7 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
 		E72092C5B51D4772BA29AC09 /* RNSVG.xcodeproj */ = {isa = PBXFileReference; name = "RNSVG.xcodeproj"; path = "../node_modules/react-native-svg/ios/RNSVG.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
 		304E8741127E483194B0A724 /* libRNSVG.a */ = {isa = PBXFileReference; name = "libRNSVG.a"; path = "libRNSVG.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
+		F21B2FF59448478FA51EDA42 /* SplashScreen.xcodeproj */ = {isa = PBXFileReference; name = "SplashScreen.xcodeproj"; path = "../node_modules/react-native-splash-screen/ios/SplashScreen.xcodeproj"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = wrapper.pb-project; explicitFileType = undefined; includeInIndex = 0; };
+		B092ED872FB64800B09F75EB /* libSplashScreen.a */ = {isa = PBXFileReference; name = "libSplashScreen.a"; path = "libSplashScreen.a"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = archive.ar; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -339,6 +342,7 @@
 				36F46D69CDCA40D48D58392A /* libRNImagePicker.a in Frameworks */,
 				D6AFC958BD6F441AB6A01854 /* libRNVectorIcons.a in Frameworks */,
 				EA58A63AFBB44989A935B2B3 /* libRNSVG.a in Frameworks */,
+				99CC239C77C8480AA5799F42 /* libSplashScreen.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,6 +509,7 @@
 				990B057AAB314634894364B4 /* RNImagePicker.xcodeproj */,
 				88A7E9CFF53B4EA0A4DF2838 /* RNVectorIcons.xcodeproj */,
 				E72092C5B51D4772BA29AC09 /* RNSVG.xcodeproj */,
+				F21B2FF59448478FA51EDA42 /* SplashScreen.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1035,6 +1040,7 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
 					"-ObjC",
@@ -1056,6 +1062,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
