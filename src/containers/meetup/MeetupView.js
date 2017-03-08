@@ -2,50 +2,7 @@ import React, {Component} from "react";
 import {View, Alert, ListView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, List, ListItem, FormInput, FormLabel} from "@components/ui/";
-import Svg, {
-  Circle,
-  Ellipse,
-  G,
-  LinearGradient,
-  RadialGradient,
-  Line,
-  Path,
-  Polygon,
-  Polyline,
-  Rect,
-  Symbol,
-  TSpan,
-  Text,
-  Use,
-  Defs,
-  Stop
-} from 'react-native-svg';
-
-const styles = StyleSheet.create({
-  // Tab Styles
-  tabContainer: {
-    flex: 1,
-  },
-  tabbar: {
-    backgroundColor: AppColors.brand.primary,
-  },
-  tabbarIndicator: {
-    backgroundColor: '#FFF',
-  },
-  tabbar_text: {
-    color: '#FFF',
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+import Svg, {Rect} from "react-native-svg";
 
 class MeetupView extends Component {
 
