@@ -4,7 +4,7 @@ import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import Svg, {Rect} from "react-native-svg";
 
-class MeetupView extends Component {
+class StacksView extends Component {
 
   constructor(props) {
     super(props);
@@ -22,4 +22,4 @@ class MeetupView extends Component {
   )
 }
 
-export default MeetupView;
+export default StacksView;

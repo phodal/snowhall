@@ -8,8 +8,7 @@ import RecipeView from "@containers/recipes/DetailView";
 import UserCenter from "@containers/user-center/UserCenterView";
 import DatingView from "../containers/dating/DatingView";
 import ShowView from "../containers/show/ShowView";
-import MeetupView from "../containers/meetup/MeetupView";
-import {Image} from "react-native";
+import StacksView from "../containers/stacks/StacksView";
 
 const navbarPropsTabs = {
   ...AppConfig.navbarProps,
@@ -70,10 +69,10 @@ const scenes = (
     <Scene
       key={'meetupView'}
       {...navbarPropsTabs}
-      title={'约'}
-      component={MeetupView}
+      title={'推栈'}
+      component={StacksView}
       icon={props => TabIcon({ ...props, icon: 'dashboard' })}
-      analyticsDesc={'MeetupView: Meetup'}
+      analyticsDesc={'StacksView: Meetup'}
     />
 
     <Scene
