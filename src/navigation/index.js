@@ -15,7 +15,7 @@ import Placeholder from '@components/general/Placeholder';
 import AuthScenes from './auth';
 import TabsScenes from './tabs';
 import PhotoBrowserView from "../components/general/PhotoBrowserView";
-import WebView from "../components/general/WebView";
+import AppWebView from "../components/general/WebView";
 import TweetEditView from "../containers/show/TweetEditView";
 
 /* Routes ==================================================================== */
@@ -52,7 +52,7 @@ export default Actions.create(
         key={'webView'}
         title={'查看网页'}
         clone
-        component={WebView}
+        component={AppWebView}
         analyticsDesc={'WebView: Open View'}
       />
 
