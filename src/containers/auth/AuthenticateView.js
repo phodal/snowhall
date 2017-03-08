@@ -30,7 +30,7 @@ class Authenticate extends Component {
   gotoVmap(){
     Actions.webView({
       onNavigationStateChange: () => {},
-      url: 'http://vmap.phodal.com/'
+      url: 'https://phodal.github.io/mockfall/vmap'
     })
   }
 

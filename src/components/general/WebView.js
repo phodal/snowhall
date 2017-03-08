@@ -26,11 +26,11 @@ class AppWebView extends Component {
   static propTypes = {
     url: PropTypes.string.isRequired,
     onNavigationStateChange: PropTypes.func,
-  }
+  };
 
   static defaultProps = {
     onNavigationStateChange: null,
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -46,7 +46,7 @@ class AppWebView extends Component {
     InteractionManager.runAfterInteractions(() => {
       this.setState({ loading: false });
     });
-  }
+  };
 
   /**
     * Each time page loads, update the URL
@@ -54,7 +54,7 @@ class AppWebView extends Component {
   onNavigationStateChange = (navState) => {
     this.state.webViewURL = navState.url;
     if (this.props.onNavigationStateChange) this.props.onNavigationStateChange(navState.url);
-  }
+  };
 
   render = () => {
     const { webViewURL, loading } = this.state;
