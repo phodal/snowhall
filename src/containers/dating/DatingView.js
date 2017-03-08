@@ -1,28 +1,9 @@
-import React, {Component} from 'react';
-import {
-  View,
-  Alert,
-  ListView,
-  ScrollView,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
-
-import { SearchBar } from 'react-native-elements'
-import {AppColors, AppStyles} from '@theme/';
-
-import {
-  Alerts,
-  Button,
-  Card,
-  Spacer,
-  Text,
-  List,
-  ListItem,
-  FormInput,
-  FormLabel,
-} from '@components/ui/';
-import Tinder from './Tinder.js'
+import React, {Component} from "react";
+import {View, Alert, ListView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
+import {TabViewAnimated, TabBarTop} from "react-native-tab-view";
+import {AppColors, AppStyles} from "@theme/";
+import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
+import Tinder from "./Tinder.js";
 
 const styles = StyleSheet.create({
   // Tab Styles
@@ -35,32 +16,64 @@ const styles = StyleSheet.create({
   tabbarIndicator: {
     backgroundColor: '#FFF',
   },
-  tabbar_text: {
+  tabbarText: {
     color: '#FFF',
   },
 });
 
 class DatingView extends Component {
   static componentName = 'DatingView';
+  state = {
+    index: 0,
+    routes: [
+      { key: '1', title: '头条' },
+      { key: '2', title: '妹子' },
+      { key: '3', title: '聚会' },
+    ],
+  };
 
   constructor(props) {
     super(props);
   }
 
+  _handleChangeTab = (index) => {
+    this.setState({ index });
+  };
+
+  _renderHeader = (props) => {
+    return <TabBarTop
+      {...props}
+      style={styles.tabbar}
+      indicatorStyle={styles.tabbarIndicator}
+      renderLabel={scene => (
+        <Text style={[styles.tabbarText]}>{scene.route.title}</Text>
+      )}
+    />
+      ;
+  };
+
+  _renderScene = ({ route }) => {
+    switch (route.key) {
+      case '1':
+        return <View style={[ styles.page, { backgroundColor: '#673ab7' } ]} />;
+      case '2':
+        return <ScrollView automaticallyAdjustContentInsets={false} style={[AppStyles.container]}><Tinder style={{flex: 1}}/></ScrollView>;
+      case '3':
+        return <View style={[ styles.page, { backgroundColor: '#673ab7' } ]} />;
+      default:
+        return null;
+    }
+  };
+
   render = () => (
-    <View style={styles.tabContainer}>
-      <ScrollView
-        automaticallyAdjustContentInsets={false}
-        style={[AppStyles.container]}
-      >
-        <Tinder style={{flex: 1}}/>
-      </ScrollView>
-    </View>
+    <TabViewAnimated
+      style={styles.tabContainer}
+      navigationState={this.state}
+      renderScene={this._renderScene}
+      renderHeader={this._renderHeader}
+      onRequestChangeTab={this._handleChangeTab}
+    />
   );
-
-  changeText() {
-
-  }
 }
 
 export default DatingView;
