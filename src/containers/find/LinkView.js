@@ -47,7 +47,7 @@ class LinkView extends Component {
       .then((responseData) => { // responseData = undefined
         console.log("================== loaded data ================");
         console.log(responseData);
-        
+
         this.setState({
           loading: false,
           links: responseData.results,
@@ -94,7 +94,7 @@ class LinkView extends Component {
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
           renderRow={link =>
-            <TouchableOpacity activeOpacity={0.9} onPress={this.onPress(link.link)}>
+            <TouchableOpacity activeOpacity={0.9} onPress={this.onPress.bind(this, link.link)}>
             <Card>
               <View>
                 <Text>{link.title}</Text>
