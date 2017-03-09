@@ -97,11 +97,9 @@ class JubaView extends Component {
             <TouchableOpacity activeOpacity={0.9}>
             <Card>
               <View>
-                <Text>{juba.date}</Text>
-                <Text>{juba.title}</Text>
-                <Text>{juba.description}</Text>
-                <Text>{juba.content}</Text>
-                <Text>{juba.user}</Text>
+                <Text>{juba.title} - 发起人： {juba.user}</Text>
+                <Text>日期：{juba.date}</Text>
+                <Text>介绍：{juba.description}</Text>
               </View>
             </Card>
             </TouchableOpacity>
