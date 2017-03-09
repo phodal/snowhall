@@ -3,6 +3,7 @@ import {View, Alert, ListView, ScrollView, StyleSheet, TouchableOpacity} from "r
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import Loading from '@components/general/Loading';
+import { Actions } from 'react-native-router-flux';
 
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 
@@ -44,6 +45,9 @@ class LinkView extends Component {
         return response.json();
       })
       .then((responseData) => { // responseData = undefined
+        console.log("================== loaded data ================");
+        console.log(responseData);
+        
         this.setState({
           loading: false,
           links: responseData.results,
@@ -71,6 +75,13 @@ class LinkView extends Component {
     this.setState({isLoadMoreAsync: true});
   };
 
+  onPress(url) {
+    Actions.webView({
+      onNavigationStateChange: () => {},
+      url: url
+    });
+  }
+
   render = () => {
     if (this.state.loading) {
       return <Loading />
@@ -83,11 +94,14 @@ class LinkView extends Component {
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
           renderRow={link =>
-          <Card>
-            <View>
-              <Text>{link.title}</Text>
-            </View>
-          </Card>}
+            <TouchableOpacity activeOpacity={0.9} onPress={this.onPress(link.link)}>
+            <Card>
+              <View>
+                <Text>{link.title}</Text>
+              </View>
+            </Card>
+            </TouchableOpacity>
+          }
           dataSource={dataSource}
           canLoadMore={canLoadMoreContent}
           onLoadMoreAsync={this.onLoadMoreAsync}
