@@ -4,6 +4,8 @@ import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import Loading from '@components/general/Loading';
 
+import InfiniteScrollView from 'react-native-infinite-scroll-view';
+
 const styles = StyleSheet.create({});
 
 class LinkView extends Component {
@@ -13,7 +15,10 @@ class LinkView extends Component {
     super(props);
     this.state = {
       loading: false,
-      links: []
+      links: [],
+      dataSource: new ListView.DataSource({
+        rowHasChanged: (row1, row2) => row1 !== row2,
+      }),
     }
   }
 
@@ -23,7 +28,8 @@ class LinkView extends Component {
 
   fetchData() {
     this.setState({
-      loading: true
+      loading: true,
+      canLoadMoreContent: false
     });
 
     fetch('https://phodal.github.io/mockfall/link/api.json', {
@@ -40,28 +46,56 @@ class LinkView extends Component {
       .then((responseData) => { // responseData = undefined
         this.setState({
           loading: false,
-          links: responseData.results
+          links: responseData.results,
+          dataSource: this.updatedDataSource(responseData.results),
         });
+
+        if (!responseData.next) {
+          this.setState({
+            canLoadMoreContent: true
+          })
+        }
       })
   }
+
+  updatedDataSource(data) {
+    // See the ListView.DataSource documentation for more information on
+    // how to properly structure your data depending on your use case.
+    let rows = data;
+    let ids = rows.map((obj, index) => index);
+
+    return this.state.dataSource.cloneWithRows(rows, ids);
+  }
+
+  onLoadMoreAsync = () => {
+    this.setState({isLoadMoreAsync: true});
+  };
 
   render = () => {
     if (this.state.loading) {
       return <Loading />
     }
-    var linkElement = this.state.links.map(function (link) {
-      return (
-        <li key={link.slug}>{link.title}</li>
-      );
-    });
+    const { dataSource, canLoadMoreContent } = this.state;
 
+    return (
+      <ScrollView automaticallyAdjustContentInsets={false} style={[AppStyles.container]}>
+        <ListView
+          initialListSize={10}
+          renderScrollComponent={props => <InfiniteScrollView {...props} />}
+          renderRow={link =>
+          <Card>
+            <View>
+              <Text>{link.title}</Text>
+            </View>
+          </Card>}
+          dataSource={dataSource}
+          canLoadMore={canLoadMoreContent}
+          onLoadMoreAsync={this.onLoadMoreAsync}
+        />
 
-  return (
-    <ScrollView automaticallyAdjustContentInsets={false} style={[AppStyles.container]}>
-      {linkElement}
-    </ScrollView>
-  )
-};
+      </ScrollView>
+    )
+  };
 }
 
 export default LinkView;
