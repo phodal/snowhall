@@ -15,7 +15,7 @@ class LinkView extends Component {
     super(props);
     this.state = {
       loading: false,
-      links: [],
+      dataUrl: 'http://192.168.31.123:8000/api/link/',
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
@@ -32,7 +32,11 @@ class LinkView extends Component {
       canLoadMoreContent: false
     });
 
-    fetch('https://phodal.github.io/mockfall/link/api.json', {
+    if(!this.state.dataUrl){
+      return;
+    }
+
+    fetch(this.state.dataUrl, {
       method: 'get',
       dataType: 'json',
       headers: {
@@ -43,18 +47,15 @@ class LinkView extends Component {
       .then((response) => {
         return response.json();
       })
-      .then((responseData) => { // responseData = undefined
-        console.log("================== loaded data ================");
-        console.log(responseData);
-
+      .then((responseData) => {
         this.setState({
           loading: false,
-          links: responseData.results,
           dataSource: this.updatedDataSource(responseData.results),
         });
 
         if (!responseData.next) {
           this.setState({
+            dataUrl: responseData.next,
             canLoadMoreContent: true
           })
         }
@@ -62,8 +63,6 @@ class LinkView extends Component {
   }
 
   updatedDataSource(data) {
-    // See the ListView.DataSource documentation for more information on
-    // how to properly structure your data depending on your use case.
     let rows = data;
     let ids = rows.map((obj, index) => index);
 
@@ -72,14 +71,13 @@ class LinkView extends Component {
 
   onLoadMoreAsync = () => {
     this.setState({isLoadMoreAsync: true});
+    this.fetchData().then(function(){
+      this.setState({isLoadMoreAsync: false});
+    })
   };
 
   onPress(url) {
-    // Linking.openURL(url);
-    Actions.webView({
-      onNavigationStateChange: () => {},
-      url: url
-    });
+    Linking.openURL(url);
   }
 
   render = () => {
@@ -94,7 +92,7 @@ class LinkView extends Component {
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
           renderRow={link =>
-            <TouchableOpacity activeOpacity={0.9} onPress={this.onPress.bind(this, link.link)}>
+            <TouchableOpacity onPress={this.onPress.bind(this, link.link)}>
             <Card>
               <View>
                 <Text>{link.title}</Text>
