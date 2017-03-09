@@ -1,9 +1,8 @@
 import React, {Component} from "react";
-import {View, Alert, ListView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Alert, ListView, Linking, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import Loading from '@components/general/Loading';
-import { Actions } from 'react-native-router-flux';
 
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 
@@ -76,6 +75,7 @@ class LinkView extends Component {
   };
 
   onPress(url) {
+    // Linking.openURL(url);
     Actions.webView({
       onNavigationStateChange: () => {},
       url: url
