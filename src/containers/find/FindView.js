@@ -5,6 +5,7 @@ import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import Tinder from "./Tinder.js";
 import LinkView from "./LinkView.js";
+import JubaView from "./JubaView.js";
 
 const styles = StyleSheet.create({
   // Tab Styles
@@ -60,7 +61,7 @@ class FindView extends Component {
       case '2':
         return <ScrollView automaticallyAdjustContentInsets={false} style={[AppStyles.container]}><Tinder style={{flex: 1}}/></ScrollView>;
       case '3':
-        return <View style={[ styles.page, { backgroundColor: '#673ab7' } ]} />;
+        return <JubaView />;
       default:
         return null;
     }
