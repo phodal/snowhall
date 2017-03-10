@@ -4,7 +4,7 @@ import {TabViewAnimated, TabBarTop} from "react-native-tab-view";
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import Tinder from "./Tinder.js";
-import LinkView from "./LinkView.js";
+import LinkContainer from "./Link/LinkContainer.js";
 import JubaView from "./JubaView.js";
 
 const styles = StyleSheet.create({
@@ -57,7 +57,7 @@ class FindView extends Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case '1':
-        return <LinkView />;
+        return <LinkContainer />;
       case '2':
         return <ScrollView automaticallyAdjustContentInsets={false} style={[AppStyles.container]}><Tinder style={{flex: 1}}/></ScrollView>;
       case '3':
