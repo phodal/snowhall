@@ -15,14 +15,15 @@ class LinkView extends Component {
     super(props);
     this.state = {
       loading: false,
-      dataUrl: 'http://192.168.31.123:8000/api/link/',
+      links: [],
+      dataUrl: 'http://99.12.195.70:8000/api/link/',
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
     }
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchData();
   }
 
@@ -63,16 +64,18 @@ class LinkView extends Component {
   }
 
   updatedDataSource(data) {
-    let rows = data;
-    let ids = rows.map((obj, index) => index);
+    this.setState({
+      links: this.state.links.concat(data)
+    });
 
-    return this.state.dataSource.cloneWithRows(rows, ids);
+    return this.state.dataSource.cloneWithRows(this.state.links);
   }
 
   onLoadMoreAsync = () => {
+    var that = this;
     this.setState({isLoadMoreAsync: true});
     this.fetchData().then(function(){
-      this.setState({isLoadMoreAsync: false});
+      that.setState({isLoadMoreAsync: false});
     })
   };
 
