@@ -32,9 +32,15 @@ class LinkContainer extends Component {
     this.fetchLinkData();
   };
 
-  fetchLinkData = () => {
+  fetchLinkData = (option) => {
+
+    if(!option) {
+      this.setState({
+        loading: true
+      });
+    }
+
     this.setState({
-      loading: true,
       canLoadMoreContent: false
     });
 
@@ -79,7 +85,11 @@ class LinkContainer extends Component {
   };
 
   _loadMoreContentAsync = async() => {
-    this.fetchLinkData();
+    this.fetchLinkData({loadingMore: true}).then(() => {
+      this.setState({
+        loadingMore: true
+      })
+    })
   };
 
   render = () => {

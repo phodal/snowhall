@@ -37,6 +37,10 @@ class LinkView extends Component {
     });
   }
 
+  componentWillMount(){
+
+  }
+
   getUpdatedDataSource(props) {
     let rows = props.links;
     let ids = rows.map((obj, index) => index);
@@ -54,16 +58,6 @@ class LinkView extends Component {
 
   onPress(url) {
     Linking.openURL(url);
-  }
-
-  componentWillMount(){
-    //TODO: check why componentWillReceiveProps not working
-    if(this.props.links.length > 1 && this.state.dataSource.getRowCount() < 1) {
-      this.setState({
-        dataSource: this.getUpdatedDataSource(this.props),
-        canLoadMoreContent: this.props.canLoadMoreContent
-      });
-    }
   }
 
   render = () => {
