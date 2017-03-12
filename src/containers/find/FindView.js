@@ -57,7 +57,7 @@ class FindView extends Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case '1':
-        return <LinkContainer />;
+        return <View style={styles.tabContainer}><LinkContainer /></View>;
       case '2':
         return <ScrollView automaticallyAdjustContentInsets={false} style={[AppStyles.container]}><Tinder style={{flex: 1}}/></ScrollView>;
       case '3':
@@ -74,6 +74,7 @@ class FindView extends Component {
       renderScene={this._renderScene}
       renderHeader={this._renderHeader}
       onRequestChangeTab={this._handleChangeTab}
+      lazy={true}
     />
   );
 }

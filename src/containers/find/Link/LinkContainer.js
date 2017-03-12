@@ -4,6 +4,7 @@ import {ErrorMessages} from "@constants/";
 import Error from "@components/general/Error";
 import Loading from "@components/general/Loading";
 import LinkView from "./LinkView";
+import {View, Text} from "react-native";
 
 const mapStateToProps = (state) => {
   return {links: state.links};

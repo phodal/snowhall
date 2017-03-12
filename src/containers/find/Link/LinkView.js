@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from "react";
-import {View, Alert, ListView, Linking, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Alert, ListView, Linking, Text, StyleSheet, TouchableOpacity} from "react-native";
 import {AppColors, AppStyles} from "@theme/";
-import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
+import {Card} from "@components/ui/";
 import {ErrorMessages} from '@constants/';
 
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
@@ -64,8 +64,16 @@ class LinkView extends Component {
       return <Error text={ErrorMessages.links404}/>;
     }
 
+    console.log(links);
+
     return (
-      <View style={[AppStyles.container]}>
+      <View>
+        <View>
+          {links.map(function(link, i){
+            return <Text key={i}>{link.title}</Text>;
+          })}
+        </View>
+
         <ListView
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
@@ -79,6 +87,7 @@ class LinkView extends Component {
           dataSource={dataSource}
           canLoadMore={canLoadMoreContent}
           onLoadMoreAsync={this.onLoadMoreAsync}
+          refreshControl={null}
         />
 
       </View>
