@@ -6,6 +6,7 @@ import { ErrorMessages } from '@constants/';
 
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 import Error from '@components/general/Error';
+import LinkCard from "./LinkCard";
 
 const styles = StyleSheet.create({});
 
@@ -30,6 +31,7 @@ class LinkView extends Component {
   }
 
   componentWillReceiveProps(props) {
+    console.log(props);
     this.setState({
       dataSource: this.getUpdatedDataSource(props),
       canLoadMoreContent: props.canLoadMoreContent
@@ -51,10 +53,6 @@ class LinkView extends Component {
       });
   };
 
-  onPress(url) {
-    Linking.openURL(url);
-  }
-
   render = () => {
     const { links } = this.props;
     const { dataSource, canLoadMoreContent } = this.state;
@@ -68,15 +66,7 @@ class LinkView extends Component {
         <ListView
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
-          renderRow={link =>
-            <TouchableOpacity onPress={this.onPress.bind(this, link.link)}>
-            <Card>
-              <View>
-                <Text>{link.title}</Text>
-              </View>
-            </Card>
-            </TouchableOpacity>
-          }
+          renderRow={link => <LinkCard link={link} />}
           dataSource={dataSource}
           canLoadMore={canLoadMoreContent}
           onLoadMoreAsync={this.onLoadMoreAsync}

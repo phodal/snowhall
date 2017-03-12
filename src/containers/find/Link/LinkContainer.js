@@ -22,7 +22,7 @@ class LinkContainer extends Component {
       loadingMore: false,
       canLoadMoreContent: false,
       links: [],
-      dataUrl: 'http://99.12.195.70:8000/api/link/',
+      dataUrl: 'http://192.168.31.189:8000/api/link/',
       error: null
     };
   }
@@ -65,7 +65,15 @@ class LinkContainer extends Component {
             canLoadMoreContent: true
           })
         }
-      })
+      }).catch((err) => {
+        this.setState({
+          links: [],
+          error,
+          loadingMore: false,
+          canLoadMoreContent: false,
+          loading: false,
+        });
+    });
   };
 
   _loadMoreContentAsync = async() => {
