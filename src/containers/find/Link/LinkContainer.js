@@ -23,6 +23,7 @@ class LinkContainer extends Component {
       loadingMore: false,
       canLoadMoreContent: false,
       links: [],
+      originDataUrl: 'http://192.168.31.189:8000/api/link/',
       dataUrl: 'http://192.168.31.189:8000/api/link/',
       error: null
     };
@@ -38,6 +39,10 @@ class LinkContainer extends Component {
       this.setState({
         loading: true
       });
+    } else if (option.dataUrl) {
+      this.setState({
+        dataUrl: option.dataUrl
+      })
     }
 
     this.setState({
@@ -60,7 +65,6 @@ class LinkContainer extends Component {
         return response.json();
       })
       .then((responseData) => {
-        console.log(responseData);
         let links = this.state.links.concat(responseData.results);
         this.setState({
           loading: false,
@@ -93,7 +97,7 @@ class LinkContainer extends Component {
   };
 
   render = () => {
-    const {loading, error, links, canLoadMoreContent} = this.state;
+    const {loading, error, originDataUrl, links, canLoadMoreContent} = this.state;
 
     if (loading) return <Loading />;
     if (error) return <Error text={error}/>;
@@ -104,6 +108,7 @@ class LinkContainer extends Component {
         canLoadMoreContent={canLoadMoreContent}
         onLoadMoreAsync={this._loadMoreContentAsync}
         reFetch={this.fetchLinkData}
+        dataUrl={originDataUrl}
       />
     );
   }

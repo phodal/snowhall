@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react";
-import {View, Alert, ListView, Linking, Text, StyleSheet, ScrollView, TouchableOpacity} from "react-native";
+import {View, Alert, ListView, RefreshControl, Linking, Text, StyleSheet, ScrollView, TouchableOpacity} from "react-native";
 import {AppColors, AppStyles} from "@theme/";
 import {Card} from "@components/ui/";
 import {ErrorMessages} from '@constants/';
@@ -15,14 +15,18 @@ class LinkView extends Component {
   static propTypes = {
     links: PropTypes.arrayOf(PropTypes.object).isRequired,
     canLoadMoreContent: PropTypes.bool,
-    onLoadMoreAsync: PropTypes.func
+    onLoadMoreAsync: PropTypes.func,
+    reFetch: PropTypes.func,
+    dataUrl: PropTypes.string
   };
 
   constructor() {
     super();
 
     this.state = {
+      isRefreshing: true,
       canLoadMoreContent: false,
+      isLoadMoreAsync: null,
       dataSource: new ListView.DataSource({
         rowHasChanged: (row1, row2) => row1 !== row2,
       }),
@@ -33,12 +37,14 @@ class LinkView extends Component {
     console.log(props);
     this.setState({
       dataSource: this.getUpdatedDataSource(props),
-      canLoadMoreContent: props.canLoadMoreContent
+      canLoadMoreContent: props.canLoadMoreContent,
+      dataUrl: props.dataUrl,
+      isRefreshing: false
     });
   }
 
   componentWillMount(){
-
+    //TODO: check componentWillReceiveProps problem
   }
 
   getUpdatedDataSource(props) {
@@ -60,11 +66,23 @@ class LinkView extends Component {
     Linking.openURL(url);
   }
 
+  reFetch = () => {
+    if (this.props.reFetch) {
+      this.setState({ isRefreshing: true });
+
+      this.props.reFetch({dataUrl: this.state.dataUrl})
+        .then(() => {
+          this.setState({ isRefreshing: false });
+        });
+    }
+  };
+
+
   render = () => {
     const {links} = this.props;
-    const {dataSource, canLoadMoreContent} = this.state;
+    const {isRefreshing, dataSource, canLoadMoreContent} = this.state;
 
-    if (!links || links.length < 1) {
+    if (!isRefreshing && (!links || links.length < 1)) {
       return <Error text={ErrorMessages.links404}/>;
     }
 
@@ -83,7 +101,15 @@ class LinkView extends Component {
           dataSource={dataSource}
           canLoadMore={canLoadMoreContent}
           onLoadMoreAsync={this.onLoadMoreAsync}
-          refreshControl={null}
+          refreshControl={
+            this.props.reFetch ?
+              <RefreshControl
+                refreshing={isRefreshing}
+                onRefresh={this.reFetch}
+                tintColor={AppColors.brand.primary}
+              />
+            : null
+          }
         />
 
       </View>
