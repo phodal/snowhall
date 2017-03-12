@@ -6,8 +6,27 @@ import {ErrorMessages} from '@constants/';
 
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 import Error from '@components/general/Error';
+import moment from "moment";
 
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  headerContainer: {
+    flex:1,
+  },
+  headerTitle:{
+    fontSize: 20,
+    textAlign: 'left',
+    color: '#FF6600',
+  },
+  headerSourceLabel:{
+    fontSize: 15,
+    textAlign: 'left',
+    color: '#0089FF',
+  },
+  headerPostDetailsLine: {
+    fontSize: 12,
+    color: 'gray',
+  }
+});
 
 class LinkView extends Component {
   static componentName = 'LinkView';
@@ -92,11 +111,16 @@ class LinkView extends Component {
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
           renderRow={link => <TouchableOpacity onPress={this.onPress.bind(this, link.link)}>
-            <Card>
-              <View>
-                <Text>{link.title}</Text>
-              </View>
-            </Card>
+               <Card>
+                <View style={styles.headerContainer}>
+                  <Text style={styles.headerTitle}>
+                    {link.title}
+                  </Text>
+                  <Text style={styles.headerPostDetailsLine}>
+                    {moment(link.date).fromNow()}
+                  </Text>
+                </View>
+              </Card>
             </TouchableOpacity>}
           dataSource={dataSource}
           canLoadMore={canLoadMoreContent}
