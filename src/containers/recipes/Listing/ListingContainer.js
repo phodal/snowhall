@@ -1,35 +1,18 @@
-/**
- * List of Recipes for a Meal Container
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
-import React, { Component, PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React, {Component, PropTypes} from "react";
+import {connect} from "react-redux";
+import AppAPI from "@lib/api";
+import {ErrorMessages} from "@constants/";
+import Error from "@components/general/Error";
+import Loading from "@components/general/Loading";
+import ListingView from "./ListingView";
 
-// Actions
-// import * as UserActions from '@redux/user/actions';
-
-// Consts and Libs
-import AppAPI from '@lib/api';
-import { ErrorMessages } from '@constants/';
-
-// Components
-import Error from '@components/general/Error';
-import Loading from '@components/general/Loading';
-import ListingView from './ListingView';
-
-/* Redux ==================================================================== */
-// What data from the store shall we send to the component?
 const mapStateToProps = (state) => {
   return {recipes: state.recipes};
 };
 
-// Any actions to map to the component?
 const mapDispatchToProps = {
 };
 
-/* Component ==================================================================== */
 class ListingContainer extends Component {
   static componentName = 'ListingContainer';
 
