@@ -42,6 +42,7 @@ class CommonContainer extends Component {
       });
     } else if (option.dataUrl) {
       this.setState({
+        data: [],
         dataUrl: option.dataUrl
       })
     }

@@ -97,7 +97,6 @@ class FindView extends Component {
       renderScene={this._renderScene}
       renderHeader={this._renderHeader}
       onRequestChangeTab={this._handleChangeTab}
-      lazy={true}
     />
   );
 }
