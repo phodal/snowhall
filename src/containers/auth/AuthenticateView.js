@@ -64,23 +64,6 @@ class Authenticate extends Component {
 
       <Spacer size={5} />
 
-      <Text p style={[AppStyles.textCenterAligned, styles.whiteText]}>
-        --- --- ---
-      </Text>
-
-      <View style={[AppStyles.row, AppStyles.paddingHorizontal]}>
-        <View style={[AppStyles.flex1]} />
-        <View style={[AppStyles.flex2]}>
-          <Button
-            title={'找个程序员修电脑'}
-            onPress={this.gotoVmap}
-            backgroundColor={'transparent'}
-            raised={false}
-          />
-        </View>
-        <View style={[AppStyles.flex1]} />
-      </View>
-
       <View style={[AppStyles.row, AppStyles.paddingHorizontal]}>
         <View style={[AppStyles.flex1]} />
         <View style={[AppStyles.flex2]}>

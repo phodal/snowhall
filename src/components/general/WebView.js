@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, {Component, PropTypes} from 'react';
 import {
   WebView,
   StyleSheet,
@@ -10,8 +10,8 @@ import {
 } from 'react-native';
 
 // Consts and Libs
-import { AppColors, AppStyles } from '@theme/';
-import { Actions } from 'react-native-router-flux';
+import {AppColors, AppStyles} from '@theme/';
+import {Actions} from 'react-native-router-flux';
 
 // Components
 import Loading from '@components/general/Loading';
@@ -59,13 +59,13 @@ class AppWebView extends Component {
   componentDidMount = () => {
     // Wait until interaction has finished before loading the webview in
     InteractionManager.runAfterInteractions(() => {
-      this.setState({ loading: false });
+      this.setState({loading: false});
     });
   };
 
   /**
-    * Each time page loads, update the URL
-    */
+   * Each time page loads, update the URL
+   */
   onNavigationStateChange = (navState) => {
     this.state.webViewURL = navState.url;
     if (this.props.onNavigationStateChange) this.props.onNavigationStateChange(navState.url);
@@ -76,31 +76,20 @@ class AppWebView extends Component {
   };
 
   render = () => {
-    const { webViewURL, loading } = this.state;
-
-    console.log(webViewURL);
+    const {webViewURL, loading} = this.state;
 
     if (loading) return <Loading />;
-    if (!webViewURL) return <Error type={'URL not defined.'} />;
+    if (!webViewURL) return <Error type={'URL not defined.'}/>;
 
     return (
-      <ScrollView style={[AppStyles.container]}>
-        <View style={styles.topbar}>
-          <TouchableOpacity
-            onPress={this.onBack.bind(this)}
-          >
-            <Text style={styles.text}> 返回 </Text>
-          </TouchableOpacity>
-        </View>
-        <WebView
-          scalesPageToFit
-          startInLoadingState
-          source={{ uri: webViewURL }}
-          automaticallyAdjustContentInsets={false}
-          style={[AppStyles.container, styles.container]}
-          onNavigationStateChange={this.onNavigationStateChange}
-        />
-      </ScrollView>
+      <WebView
+        scalesPageToFit
+        startInLoadingState
+        source={{ uri: webViewURL }}
+        automaticallyAdjustContentInsets={false}
+        style={[AppStyles.container, styles.container]}
+        onNavigationStateChange={this.onNavigationStateChange}
+      />
     );
   }
 }
