@@ -2,11 +2,10 @@ import React, {Component, PropTypes} from "react";
 import {View, Alert, ListView, Linking, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
-import { ErrorMessages } from '@constants/';
+import {ErrorMessages} from '@constants/';
 
 import InfiniteScrollView from 'react-native-infinite-scroll-view';
 import Error from '@components/general/Error';
-import LinkCard from "./LinkCard";
 
 const styles = StyleSheet.create({});
 
@@ -53,12 +52,16 @@ class LinkView extends Component {
       });
   };
 
+  onPress(url) {
+    Linking.openURL(url);
+  }
+
   render = () => {
-    const { links } = this.props;
-    const { dataSource, canLoadMoreContent } = this.state;
+    const {links} = this.props;
+    const {dataSource, canLoadMoreContent} = this.state;
 
     if (!links || links.length < 1) {
-      return <Error text={ErrorMessages.links404} />;
+      return <Error text={ErrorMessages.links404}/>;
     }
 
     return (
@@ -66,7 +69,13 @@ class LinkView extends Component {
         <ListView
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}
-          renderRow={link => <LinkCard link={link} />}
+          renderRow={link => <TouchableOpacity onPress={this.onPress.bind(this, link.link)}>
+            <Card>
+              <View>
+                <Text>{link.title}</Text>
+              </View>
+            </Card>
+            </TouchableOpacity>}
           dataSource={dataSource}
           canLoadMore={canLoadMoreContent}
           onLoadMoreAsync={this.onLoadMoreAsync}

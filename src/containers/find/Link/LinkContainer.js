@@ -41,7 +41,7 @@ class LinkContainer extends Component {
       return;
     }
 
-    fetch(this.state.dataUrl, {
+    return fetch(this.state.dataUrl, {
       method: 'get',
       dataType: 'json',
       headers: {
@@ -53,6 +53,7 @@ class LinkContainer extends Component {
         return response.json();
       })
       .then((responseData) => {
+        console.log(responseData);
         let links = this.state.links.concat(responseData.results);
         this.setState({
           loading: false,
@@ -66,9 +67,9 @@ class LinkContainer extends Component {
           })
         }
       }).catch((err) => {
+        console.log(err);
         this.setState({
           links: [],
-          error,
           loadingMore: false,
           canLoadMoreContent: false,
           loading: false,
