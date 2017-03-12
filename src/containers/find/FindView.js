@@ -3,7 +3,6 @@ import {View, Alert, ListView, ScrollView, StyleSheet, Image, TouchableOpacity} 
 import {TabViewAnimated, TabBarTop} from "react-native-tab-view";
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
-import Tinder from "./Tinder.js";
 import LinkContainer from "./Link/LinkContainer.js";
 import JubaView from "./JubaView.js";
 import CommonContainer from "../common/CommonContainer";
