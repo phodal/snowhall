@@ -1,5 +1,5 @@
 import React, {Component, PropTypes} from "react";
-import {View, Alert, ListView, Linking, Text, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Alert, ListView, Linking, Text, StyleSheet, ScrollView, TouchableOpacity} from "react-native";
 import {AppColors, AppStyles} from "@theme/";
 import {Card} from "@components/ui/";
 import {ErrorMessages} from '@constants/';
@@ -56,6 +56,16 @@ class LinkView extends Component {
     Linking.openURL(url);
   }
 
+  componentWillMount(){
+    //TODO: check why componentWillReceiveProps not working
+    if(this.props.links.length > 1 && this.state.dataSource.getRowCount() < 1) {
+      this.setState({
+        dataSource: this.getUpdatedDataSource(this.props),
+        canLoadMoreContent: this.props.canLoadMoreContent
+      });
+    }
+  }
+
   render = () => {
     const {links} = this.props;
     const {dataSource, canLoadMoreContent} = this.state;
@@ -64,16 +74,8 @@ class LinkView extends Component {
       return <Error text={ErrorMessages.links404}/>;
     }
 
-    console.log(links);
-
     return (
       <View>
-        <View>
-          {links.map(function(link, i){
-            return <Text key={i}>{link.title}</Text>;
-          })}
-        </View>
-
         <ListView
           initialListSize={10}
           renderScrollComponent={props => <InfiniteScrollView {...props} />}

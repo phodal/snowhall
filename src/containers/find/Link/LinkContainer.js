@@ -61,7 +61,7 @@ class LinkContainer extends Component {
           links: links,
         });
 
-        if (!responseData.next) {
+        if (!!responseData.next) {
           this.setState({
             dataUrl: responseData.next,
             canLoadMoreContent: true
@@ -79,7 +79,7 @@ class LinkContainer extends Component {
   };
 
   _loadMoreContentAsync = async() => {
-    this.fetchData();
+    this.fetchLinkData();
   };
 
   render = () => {
