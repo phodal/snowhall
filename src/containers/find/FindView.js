@@ -1,11 +1,12 @@
 import React, {Component} from "react";
-import {View, Alert, ListView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Alert, ListView, ScrollView, StyleSheet, Image, TouchableOpacity} from "react-native";
 import {TabViewAnimated, TabBarTop} from "react-native-tab-view";
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import Tinder from "./Tinder.js";
 import LinkContainer from "./Link/LinkContainer.js";
 import JubaView from "./JubaView.js";
+import CommonContainer from "../common/CommonContainer";
 
 const styles = StyleSheet.create({
   // Tab Styles
@@ -20,6 +21,10 @@ const styles = StyleSheet.create({
   },
   tabbarText: {
     color: '#FFF',
+  },
+  image:{
+    width: 120,
+    height: 120
   },
 });
 
@@ -54,12 +59,30 @@ class FindView extends Component {
       ;
   };
 
+  renderElement = (data) => {
+    return <View>
+      <Card>
+        <Text>{data.title}</Text>
+        <Text>{data.user.username}</Text>
+        <Text>{data.user.avatar.avatar}</Text>
+        {data.user.avatar.avatar === null ? null :
+          <Image source={{uri: data.user.avatar.avatar}} style={styles.image}/>
+        }
+        {data.image === null ? null :
+          <Image source={{uri: data.image}} style={styles.image}/>
+        }
+      </Card>
+    </View>
+  };
+
   _renderScene = ({ route }) => {
     switch (route.key) {
       case '1':
         return <View style={styles.tabContainer}><LinkContainer /></View>;
       case '2':
-        return <ScrollView automaticallyAdjustContentInsets={false} style={[AppStyles.container]}><Tinder style={{flex: 1}}/></ScrollView>;
+        return <View style={[AppStyles.tabContainer]}>
+                  <CommonContainer url={'http://192.168.31.189:8000/api/show/'} element={data => this.renderElement(data)} />
+                </View>;
       case '3':
         return <JubaView />;
       default:
