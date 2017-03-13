@@ -1,18 +1,8 @@
-import React, {
-  Component,
-  PropTypes
-} from 'react'
-
-import {
-  View,
-  Text,
-  Image,
-  TextInput,
-  TouchableHighlight,
-  StyleSheet
-} from 'react-native'
-import { Icon, Button } from 'react-native-elements';
-var ImagePicker = require('react-native-image-picker');
+import React, {Component, PropTypes} from "react";
+import {View, Text, Image, TextInput, TouchableHighlight, StyleSheet} from "react-native";
+import {Icon, Button} from "react-native-elements";
+import {AppColors, AppStyles} from "@theme/";
+let ImagePicker = require('react-native-image-picker');
 
 export default class EditorComp extends Component {
   constructor(props) {
@@ -26,7 +16,7 @@ export default class EditorComp extends Component {
 
   render() {
     return (
-      <View>
+      <View style={[AppStyles.tabContainer]}>
         <TextInput
           placeholder={this.props.placeholder}
           multiline={true}
