@@ -41,7 +41,6 @@ class CommonContainer extends Component {
       });
     } else if (option.dataUrl) {
       this.setState({
-        data: [],
         dataUrl: option.dataUrl
       })
     }
@@ -67,7 +66,9 @@ class CommonContainer extends Component {
       })
       .then((responseData) => {
         let data = this.state.data.concat(responseData.results);
-        console.log(data);
+        if(option && option.dataUrl) {
+          data = responseData.results;
+        }
         this.setState({
           loading: false,
           data: data,
