@@ -46,7 +46,7 @@ const scenes = (
     <Scene
       key={'datingView'}
       {...navbarPropsTabs}
-      title={'寻找'}
+      title={'寻Ta'}
       component={FindView}
       icon={props => TabIcon({ ...props, icon: 'wc' })}
       analyticsDesc={'FindView: Coming Soon'}
@@ -55,7 +55,7 @@ const scenes = (
     <Scene
       key={'showView'}
       {...navbarPropsTabs}
-      title={'秀'}
+      title={'秀秀'}
       component={ShowView}
       onRight={()=> {
         Actions.tweetEditView()
