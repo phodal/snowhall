@@ -1,29 +1,11 @@
-/**
- * Receipe Tabs Screen
- *  - Shows tabs, which contain receipe listings
- *
- * React Native Starter App
- * https://github.com/mcnamee/react-native-starter-app
- */
-import React, { Component, PropTypes } from 'react';
-import {
-  View,
-  StyleSheet,
-  InteractionManager,
-} from 'react-native';
-import { TabViewAnimated, TabBarTop } from 'react-native-tab-view';
-
-// Consts and Libs
-import { AppColors } from '@theme/';
-import AppAPI from '@lib/api';
-
-// Containers
-import ListingContainer from '@containers/recipes/Listing/ListingContainer';
-
-// Components
-import { Text } from '@ui/';
-import Loading from '@components/general/Loading';
-import Error from '@components/general/Error';
+import React, {Component, PropTypes} from "react";
+import {View, StyleSheet, InteractionManager} from "react-native";
+import {TabViewAnimated, TabBarTop} from "react-native-tab-view";
+import {AppColors} from "@theme/";
+import ListingContainer from "@containers/recipes/Listing/ListingContainer";
+import {Text} from "@ui/";
+import Loading from "@components/general/Loading";
+import Error from "@components/general/Error";
 
 /* Styles ==================================================================== */
 const styles = StyleSheet.create({
@@ -46,11 +28,6 @@ const styles = StyleSheet.create({
 class RecipeTabs extends Component {
   static componentName = 'RecipeTabs';
 
-  static propTypes = {
-    meals: PropTypes.arrayOf(PropTypes.object),
-    getMeals: PropTypes.func.isRequired,
-  }
-
   constructor(props) {
     super(props);
 
@@ -62,26 +39,24 @@ class RecipeTabs extends Component {
 
   componentDidMount = () => {
     InteractionManager.runAfterInteractions(() => {
-      this.fetchData();
+      this.setTabs();
     });
-  }
+  };
 
-  /**
-    * When meals are ready, populate tabs
-    */
   setTabs = () => {
-    const routes = [];
-    let idx = 0;
-    this.props.meals.forEach((meal) => {
-      routes.push({
-        key: idx.toString(),
-        id: meal.id.toString(),
-        title: meal.name,
-      });
+    const routes = [
+      {
+        id: "143",
+        key: "0",
+        title: "极客爱情"
+      },
+      {
 
-      idx += 1;
-    });
-
+        id: "1",
+        key: "1",
+        title: "爱情攻略"
+      }
+    ];
     this.setState({
       navigation: {
         index: 0,
@@ -92,41 +67,15 @@ class RecipeTabs extends Component {
         loading: false,
       });
     });
-  }
+  };
 
-  /**
-    * Fetch meals to populate tabs
-    */
-  fetchData = () => {
-    // Get meals to populate tabs
-    if (!this.props.meals || this.props.meals.length < 1) {
-      this.props.getMeals()
-        .then(() => {
-          this.setTabs();
-        }).catch((err) => {
-          const error = AppAPI.handleError(err);
-          this.setState({
-            loading: false,
-            error,
-          });
-        });
-    } else {
-      this.setTabs();
-    }
-  }
 
-  /**
-    * On Change Tab
-    */
   handleChangeTab = (index) => {
     this.setState({
       navigation: { ...this.state.navigation, index },
     });
-  }
+  };
 
-  /**
-    * Header Component
-    */
   renderHeader = props => (
     <TabBarTop
       {...props}
@@ -136,11 +85,9 @@ class RecipeTabs extends Component {
         <Text style={[styles.tabbarText]}>{scene.route.title}</Text>
       )}
     />
-  )
+  );
 
-  /**
-    * Which component to show
-    */
+
   renderScene = ({ route }) => {
     // For performance, only render if it's this route, or I've visited before
     if (
