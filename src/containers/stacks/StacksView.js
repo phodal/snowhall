@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {View, Alert, ListView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
+import {View, Alert, Text, ListView, ScrollView, StyleSheet, TouchableOpacity} from "react-native";
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import CommonContainer from "../common/CommonContainer";
