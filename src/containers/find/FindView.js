@@ -1,16 +1,32 @@
 import React, {Component} from "react";
-import {View, Alert, ListView, ScrollView, StyleSheet, Image, TouchableOpacity} from "react-native";
+import {View, Linking, Alert, ListView, ScrollView, StyleSheet, Image, TouchableOpacity} from "react-native";
 import {TabViewAnimated, TabBarTop} from "react-native-tab-view";
 import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
-import LinkContainer from "./Link/LinkContainer.js";
 import JubaView from "./JubaView.js";
 import CommonContainer from "../common/CommonContainer";
+import moment from "moment";
 
 const styles = StyleSheet.create({
-  // Tab Styles
   tabContainer: {
     flex: 1,
+  },
+  headerContainer: {
+    flex:1,
+  },
+  headerTitle:{
+    fontSize: 20,
+    textAlign: 'left',
+    color: '#FF6600',
+  },
+  headerSourceLabel:{
+    fontSize: 15,
+    textAlign: 'left',
+    color: '#0089FF',
+  },
+  headerPostDetailsLine: {
+    fontSize: 12,
+    color: 'gray',
   },
   tabbar: {
     backgroundColor: AppColors.brand.primary,
@@ -58,7 +74,11 @@ class FindView extends Component {
       ;
   };
 
-  renderElement = (data) => {
+  onPress(url) {
+    Linking.openURL(url);
+  }
+
+  renderProfileElement = (data) => {
     return <View>
       <Card>
         <Text>{data.title}</Text>
@@ -74,13 +94,30 @@ class FindView extends Component {
     </View>
   };
 
+  renderLinkProfileElement = (link) => {
+    return <TouchableOpacity onPress={this.onPress.bind(this, link.link)}>
+      <Card>
+        <View style={styles.headerContainer}>
+          <Text style={styles.headerTitle}>
+            {link.title}
+          </Text>
+          <Text style={styles.headerPostDetailsLine}>
+            {moment(link.date).fromNow()}
+          </Text>
+        </View>
+      </Card>
+    </TouchableOpacity>
+  };
+
   _renderScene = ({ route }) => {
     switch (route.key) {
       case '1':
-        return <View style={styles.tabContainer}><LinkContainer /></View>;
+        return <View style={[AppStyles.tabContainer]}>
+          <CommonContainer url={'http://192.168.31.170:8000/api/link/'} element={data => this.renderLinkProfileElement(data)} />
+        </View>;
       case '2':
         return <View style={[AppStyles.tabContainer]}>
-                  <CommonContainer url={'http://192.168.31.189:8000/api/show/'} element={data => this.renderElement(data)} />
+                  <CommonContainer url={'http://192.168.31.170:8000/api/show/'} element={data => this.renderProfileElement(data)} />
                 </View>;
       case '3':
         return <JubaView />;

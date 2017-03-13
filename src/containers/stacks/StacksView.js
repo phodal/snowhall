@@ -33,7 +33,7 @@ class StacksView extends Component {
 
   render = () => (
     <View style={[AppStyles.tabContainer]}>
-      <CommonContainer url={'http://192.168.31.189:8000/api/stack/'} element={data => this.renderElement(data)} />
+      <CommonContainer url={'http://192.168.31.170:8000/api/stack/'} element={data => this.renderElement(data)} />
     </View>
   )
 }
