@@ -35,7 +35,6 @@ class CommonContainer extends Component {
   };
 
   fetchData = (option) => {
-
     if(!option) {
       this.setState({
         loading: true

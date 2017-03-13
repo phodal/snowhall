@@ -112,13 +112,19 @@ class FindView extends Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case '1':
-        return <ScrollView style={[AppStyles.tabContainer]}>
-          <CommonContainer url={'http://192.168.31.170:8000/api/link/'} element={data => this.renderLinkProfileElement(data)} />
+        return <ScrollView>
+          <View style={[AppStyles.tabContainer]}>
+            <CommonContainer url={'http://192.168.31.170:8000/api/link/'}
+                             element={data => this.renderLinkProfileElement(data)}/>
+          </View>
         </ScrollView>;
       case '2':
-        return <ScrollView style={[AppStyles.tabContainer]}>
-                  <CommonContainer url={'http://192.168.31.170:8000/api/show/'} element={data => this.renderProfileElement(data)} />
-                </ScrollView>;
+        return <ScrollView>
+          <View style={[AppStyles.tabContainer]}>
+            <CommonContainer url={'http://192.168.31.170:8000/api/show/'}
+                             element={data => this.renderProfileElement(data)}/>
+          </View>
+        </ScrollView>;
       case '3':
         return <JubaView />;
       default:

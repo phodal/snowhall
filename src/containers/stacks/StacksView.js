@@ -4,9 +4,8 @@ import {AppColors, AppStyles} from "@theme/";
 import {Alerts, Button, Card, Spacer, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import CommonContainer from "../common/CommonContainer";
 
-
 const styles = StyleSheet.create({
-  image:{
+  image: {
     width: 120,
     height: 120
   },
@@ -16,7 +15,6 @@ class StacksView extends Component {
 
   constructor(props) {
     super(props);
-
   }
 
   renderElement = (data) => {
@@ -33,7 +31,9 @@ class StacksView extends Component {
 
   render = () => (
     <View style={[AppStyles.tabContainer]}>
-      <CommonContainer url={'http://192.168.31.170:8000/api/stack/'} element={data => this.renderElement(data)} />
+      <ScrollView automaticallyAdjustContentInsets={false} style={[AppStyles.container]}>
+        <CommonContainer url={'http://192.168.31.170:8000/api/stack/'} element={data => this.renderElement(data)}/>
+      </ScrollView>
     </View>
   )
 }
