@@ -28,6 +28,7 @@ import {
 import ParsedText from 'react-native-parsed-text'
 import { Actions } from 'react-native-router-flux';
 import moment from "moment";
+import CommonContainer from "../common/CommonContainer";
 
 const styles = StyleSheet.create({
   paginationView: {
@@ -115,91 +116,39 @@ const styles = StyleSheet.create({
   }
 });
 
-let mockData = [
-  {
-    "id": "41",
-    "nickname": "Phodal Huang",
-    "avatar": "http://articles.phodal.com/qrcode.jpg",
-    "text": "待我代码编成，娶你为妻可好",
-    "original_pic": "",
-    "created_at": "1404709434"
-  },
-  {
-    "id": "40",
-    "nickname": "Phodal Huang",
-    "avatar": "http://articles.phodal.com/qrcode.jpg",
-    "text": "the only fair is no fair https://www.phodal.com/",
-    "original_pic": "",
-    "created_at": "1404708544"
-  },
-  {
-    "id": "38",
-    "nickname": "Phodal Huang",
-    "avatar": "http://articles.phodal.com/qrcode.jpg",
-    "text": "WTF",
-    "original_pic": "http://articles.phodal.com/qrcode.jpg",
-    "created_at": "1404707590"
-  }];
-
 class ShowView extends Component {
   static componentName = 'ShowView';
 
   constructor(props) {
     super(props);
-    const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-
-    this.state = {
-      timeline: ds.cloneWithRows(mockData)
-    }
   }
 
   render () {
     return (
-      <ListView
-        renderRow={this._renderRowView.bind(this)}
-        onFetch={this._onFetch.bind(this)}
-        dataSource={this.state.timeline}
-      />
+      <ScrollView>
+        <View style={[AppStyles.tabContainer]}>
+          <CommonContainer url={'http://192.168.31.170:8000/api/show/'} element={data => this._renderRowView(data)}/>
+        </View>
+      </ScrollView>
     )
   };
 
-  setNativeProps(nativeProps) {
-    this._root.setNativeProps(nativeProps);
-  }
-
-  componentDidMount = () => {
-    this._onFetch();
-  };
-
-  _onFetch(page = 1){
-    this.setState({
-      timeline: this.getUpdatedDataSource(mockData)
-    });
-  }
-
-  getUpdatedDataSource(data) {
-    let rows = data;
-    let ids = rows.map((obj, index) => index);
-
-    return this.state.timeline.cloneWithRows(rows, ids);
-  }
-
-  _renderRowView(info) {
+  _renderRowView(data) {
     return (
-      <TouchableHighlight underlayColor='transparent' onPress={this._gotoDetails.bind(this, info)}>
-        <View ref={component => this._root = component} style={styles.tweetContainer}>
+      <TouchableHighlight underlayColor='transparent' onPress={this._gotoDetails.bind(this, data)}>
+        <View style={styles.tweetContainer}>
           <View style={styles.topContainer}>
-            <Image source={{uri: info.avatar}} style={styles.avatar} />
+            <Image source={{uri: data.user.avatar.avatar}} style={styles.avatar} />
             <View>
               <View style={styles.userContainer}>
-                <Text style={styles.name}>{info.nickname}</Text>
-                <Text style={styles.time}>{'#' + info.id + ' '} {moment(info.created_at * 1000).fromNow()}</Text>
+                <Text style={styles.name}>{data.user.username}</Text>
+                <Text style={styles.time}>  {moment(data.posted_on).fromNow()}</Text>
               </View>
             </View>
           </View>
           <View style={styles.middleContainer}>
-            <ParsedText parse={[{type: 'url', style: styles.url, onPress: this._handleUrlPress.bind(this)}]}>{info.text}</ParsedText>
-            {this._renderMsgImage(info)}
+            <ParsedText parse={[{type: 'url', style: styles.url, onPress: this._handleUrlPress.bind(this)}]}>{data.title}</ParsedText>
+            {this._renderMsgImage(data)}
           </View>
           <View style={styles.bottomContainer}>
             <TouchableHighlight underlayColor='transparent' onPress={this._showComment.bind(this)} style={styles.bottomTool}>
@@ -222,11 +171,11 @@ class ShowView extends Component {
 
   }
 
-  _renderMsgImage(info) {
-    if(info.original_pic) {
+  _renderMsgImage(data) {
+    if(data.image) {
       return (
-        <TouchableHighlight onPress={this._openPhotoBrowser.bind(this, info)}>
-          <Image source={{uri: info.original_pic}} style={[styles.msgImage, { resizeMode: Image.resizeMode.cover }]} />
+        <TouchableHighlight onPress={this._openPhotoBrowser.bind(this, data)}>
+          <Image source={{uri: data.image}} style={[styles.msgImage, { resizeMode: Image.resizeMode.cover }]} />
         </TouchableHighlight>
       )
     }
@@ -245,11 +194,11 @@ class ShowView extends Component {
 
   }
 
-  _openPhotoBrowser(info) {
+  _openPhotoBrowser(data) {
     Actions.photoBrowserView({
       mediaList: [{
-        photo: info.original_pic,
-        caption: info.text
+        photo: data.image,
+        caption: data.title
       }]
     });
   }
