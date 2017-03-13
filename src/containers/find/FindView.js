@@ -1,8 +1,8 @@
 import React, {Component} from "react";
-import {View, Linking, Alert, ListView, ScrollView, StyleSheet, Image, TouchableOpacity} from "react-native";
+import {View, Linking, Alert, ListView, Text, ScrollView, StyleSheet, Image, TouchableOpacity} from "react-native";
 import {TabViewAnimated, TabBarTop} from "react-native-tab-view";
 import {AppColors, AppStyles} from "@theme/";
-import {Alerts, Button, Card, Spacer, Text, List, ListItem, FormInput, FormLabel} from "@components/ui/";
+import {Alerts, Button, Card, Spacer, List, ListItem, FormInput, FormLabel} from "@components/ui/";
 import JubaView from "./JubaView.js";
 import CommonContainer from "../common/CommonContainer";
 import moment from "moment";
@@ -112,13 +112,13 @@ class FindView extends Component {
   _renderScene = ({ route }) => {
     switch (route.key) {
       case '1':
-        return <View style={[AppStyles.tabContainer]}>
+        return <ScrollView style={[AppStyles.tabContainer]}>
           <CommonContainer url={'http://192.168.31.170:8000/api/link/'} element={data => this.renderLinkProfileElement(data)} />
-        </View>;
+        </ScrollView>;
       case '2':
-        return <View style={[AppStyles.tabContainer]}>
+        return <ScrollView style={[AppStyles.tabContainer]}>
                   <CommonContainer url={'http://192.168.31.170:8000/api/show/'} element={data => this.renderProfileElement(data)} />
-                </View>;
+                </ScrollView>;
       case '3':
         return <JubaView />;
       default:
